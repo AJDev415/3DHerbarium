@@ -234,7 +234,7 @@ export const setImageFromNfs = async (url: string, dispatch: Dispatch<sketchfabA
     var src; dispatch({ type: 'setPhotoLoading' })
 
     // Get appropriate path and await buffer
-    const path = process.env.NEXT_PUBLIC_LOCAL === 'true' ? process.env.NEXT_PUBLIC_MAC ? `/Users/ab632/X/data${url.slice(5)}` : `X:${url.slice(5)}` : `public${url}`
+    const path =  `${process.env.NEXT_PUBLIC_DATA_PATH}${url}`
     const response = await fetch(`/api/nfs?path=${path}`)
 
     // If buffer is found, convert to blob and create object url, else use default photo (not found)
