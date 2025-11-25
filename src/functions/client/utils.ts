@@ -9,7 +9,7 @@ export const isLocalEnv = () => process.env.NEXT_PUBLIC_NODE_ENV === 'developmen
  * @param url 
  * @returns 
  */
-export const configureNfsUrl = (url: string) => isLocalEnv() ? `/api/nfs?path=X:/data${url.slice(5)}` : `/api/nfs?path=public${url}`
+export const configureNfsUrl = (url: string) => `/api/nfs?path=${process.env.DATA_PATH}${url}`
 
 /**
  * 
