@@ -28,8 +28,8 @@ export default function Foot() {
             {/* CPH Logo*/}
             <section className="ml-8 mt-6">
               <Link href="https://humboldt.edu" rel="noopener" target="_blank">
-                <div className="h-8 relative w-[164px] bottom-[5px]">
-                  <Image src="/humSvg.svg" alt='Cal Poly Humboldt Logo' fill />
+                <div className="h-12 relative w-[264px] bottom-[65px] right-[10px]">
+                  <Image src="/logos/svg/3dHerbariumWhiteLogoNoBg.svg" alt='Cal Poly Humboldt Logo' width={150} height={0} />
                 </div>
               </Link>
             </section>
@@ -53,7 +53,7 @@ export default function Foot() {
         </div>
 
         {/*Copyright*/}
-        <p className='text-white text-center mt-2'>&#169; 2025 Cal Poly Humboldt Library</p>
+        <p className='text-white text-center mt-2'>&#169; 2025 3dherbarium.net</p>
 
       </section>
 
@@ -64,7 +64,7 @@ export default function Foot() {
             {/* CPH Logo*/}
             <div className="flex items-center w-full">
               <div className="h-8 w-full relative my-4">
-                <Image src="/humSvg.svg" alt='Cal Poly Humboldt Logo' fill />
+                <Image src="/logos/svg/3dHerbariumWhiteLogoBlackBg.svg" alt='Cal Poly Humboldt Logo' fill />
               </div>
             </div>
 
@@ -83,7 +83,7 @@ export default function Foot() {
         </div>
 
         {/*Copyright*/}
-        <p className='text-white text-center mt-2'>&#169; 2025 Cal Poly Humboldt Library</p>
+        <p className='text-white text-center mt-2'>&#169; 2025 3dherbarium.net</p>
 
       </section>
 
