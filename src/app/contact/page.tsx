@@ -12,9 +12,7 @@ const Contribute = () => {
       <Header headerTitle="contribute" pageRoute="collections" />
       <div className="h-[calc(100vh-177px)] pl-8">
         <br></br>
-        <p>Project Sponsor, Library Dean Cyril Oberlander: cyril.oberlander@humboldt.edu</p>
-        <br></br>
-        <p>Analyst, Programmer and Project Manager AJ Bealum: ab632@humboldt.edu</p>
+        <p>AJ@3dherbarium.net</p>
       </div>
       <Footer />
     </>

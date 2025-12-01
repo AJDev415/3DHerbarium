@@ -14,78 +14,90 @@ import Link from 'next/link'
 // Main JSX
 export default function Foot() {
   return <footer>
-      
-      {/***** Large screen footer *****/}
-      
-      <section className='w-full h-28 bg-[#004C46] dark:bg-[#212121] flex-col hidden md:flex'>
 
-        {/* Top part of the footer (above the divider) */}
-        <section className="w-full h-3/5 flex justify-between">
+    {/***** Large screen footer *****/}
 
-          {/* Logos in lower left hand corner*/}
-          <section className='flex'>
+    <section className='w-full h-28 bg-[#004C46] dark:bg-[#212121] flex-col hidden md:flex'>
 
-            {/* CPH Logo*/}
-            <section className="ml-8 mt-6">
-              <Link href="https://humboldt.edu" rel="noopener" target="_blank">
-                <div className="h-12 relative w-[264px] bottom-[65px] right-[10px]">
-                  <Image src="/logos/svg/3dHerbariumWhiteLogoNoBg.svg" alt='Cal Poly Humboldt Logo' width={150} height={0} />
-                </div>
-              </Link>
-            </section>
+      {/* Top part of the footer (above the divider) */}
+      <section className="w-full h-3/5 flex justify-between">
 
+        {/* Logos in lower left hand corner*/}
+        <section className='flex w-full justify-between'>
+
+          {/*logo*/}
+          <section className="ml-8 mt-6 flex flex-col justify-center items-center">
+            <Link href="/about" rel="noopener" target="_blank">
+              <div className="h-12 relative w-[264px] bottom-[65px] right-[10px]">
+                <Image src="/logos/svg/3dHerbariumWhiteLogoNoBg.svg" alt='Cal Poly Humboldt Logo' width={150} height={0} />
+              </div>
+            </Link>
           </section>
 
-          {/* Links in lower right hand corner on large screens */}
-          <section className="text-white flex mx-8 justify-around items-center mt-5">
-            <p className='mx-4'><Link href="/about">About</Link></p>
-            <p className='mx-4'><Link href="/contribute">Contribute</Link></p>
-            <p className='mx-4'><Link href="/licensing">License</Link></p>
-            <p className='mx-4'><Link href="/contact">Contact</Link></p>
-            <p><Link className="text-white dark:text-[#F5F3E7] ml-4" href={'https://libguides.humboldt.edu/accessibility/3dherbarium'} target="_blank" rel="noopener noreferrer">Accessibility</Link></p>
-          </section>
+          <div className='flex items-center relative right-[30px] space-x-8'>
+            <Image src="/icons/white/twitter.svg" alt='Twitter Logo' width={25} height={0} />
+            <Image src="/icons/white/instagram.svg" alt='Instagram Logo' width={25} height={0} />
+            <Image src="/icons/white/tiktok.svg" alt='TikTok Logo' width={25} height={0} />
+          </div>
 
         </section>
 
-        {/* Lower footer div (with divider and copyright) */}
-        <div className='flex w-full justify-center'>
-          <Divider className='bg-white w-[calc(100%-64px)]' />
-        </div>
-
-        {/*Copyright*/}
-        <p className='text-white text-center mt-2'>&#169; 2025 3dherbarium.net</p>
-
       </section>
 
-      {/***** small-medium screen footer *****/}
-      
-      <section className='w-full h-fit bg-[#004C46] dark:bg-[#212121] flex flex-col md:hidden justify-center items-center'>
+      {/* Lower footer div (with divider and copyright) */}
+      <div className='flex w-full justify-center'>
+        <Divider className='bg-white w-[calc(100%-64px)]' />
+      </div>
 
-            {/* CPH Logo*/}
-            <div className="flex items-center w-full">
-              <div className="h-8 w-full relative my-4">
-                <Image src="/logos/svg/3dHerbariumWhiteLogoBlackBg.svg" alt='Cal Poly Humboldt Logo' fill />
-              </div>
-            </div>
+      {/*Copyright*/}
+      <section className='flex justify-between w-full h-2/5 mt-2'>
+        <section className="text-white flex mr-4 justify-around ml-4">
+          <p className='mx-4'><Link href="/about">About</Link></p>
+          <p className='mx-4'><Link href="/contribute">Contribute</Link></p>
+          <p className='mx-4'><Link href="/licensing">License</Link></p>
+          <p className='mx-4'><Link href="/contact">Contact</Link></p>
+        </section>
 
-          {/* Links */}
-          <div className="text-white grid grid-cols-3 text-center min-[385px]:flex min-[385px]:justify-between min-[385px]:mx-2 w-full">
-            <p className='mx-2 text-center'><Link href="/about">About</Link></p>
-            <p className='mx-2 text-center'><Link href="/contribute">Contribute</Link></p>
-            <p className='mx-2 text-center'><Link href="/licensing">License</Link></p>
-            <p className='mx-2 text-center'><Link href="/contact">Contact</Link></p>
-            <p><Link className="text-white dark:text-[#F5F3E7] mx-2" href={'https://libguides.humboldt.edu/accessibility/3dherbarium'} target="_blank" rel="noopener noreferrer">Accessibility</Link></p>
-          </div>
-
-        {/*Divider*/}
-        <div className='flex w-full justify-center'>
-          <Divider className='bg-white w-full mt-2' />
-        </div>
-
-        {/*Copyright*/}
-        <p className='text-white text-center mt-2'>&#169; 2025 3dherbarium.net</p>
-
+        <p className='text-white text-right mr-8'>&#169; 2025 3dherbarium.net</p>
       </section>
 
-    </footer>
+    </section>
+
+    {/***** small-medium screen footer *****/}
+
+    <section className='w-full h-fit bg-[#004C46] dark:bg-[#212121] flex flex-col md:hidden justify-center items-center'>
+
+      {/*Logo*/}
+      <div className="flex items-center w-full">
+        <div className="h-36 w-full relative">
+          <Image src="/logos/svg/3dHerbariumWhiteLogoNoBg.svg" alt='Cal Poly Humboldt Logo' fill />
+        </div>
+      </div>
+
+
+      <div className='flex items-center relative space-x-12 mb-12'>
+        <Image src="/icons/white/twitter.svg" alt='Twitter Logo' width={30} height={0} />
+        <Image src="/icons/white/instagram.svg" alt='Instagram Logo' width={30} height={0} />
+        <Image src="/icons/white/tiktok.svg" alt='TikTok Logo' width={30} height={0} />
+      </div>
+
+      {/* Links */}
+      <div className="text-white grid grid-cols-3 text-center min-[385px]:flex min-[385px]:justify-between min-[385px]:mx-2 w-full">
+        <p className='mx-2 text-center'><Link href="/about">About</Link></p>
+        <p className='mx-2 text-center'><Link href="/contribute">Contribute</Link></p>
+        <p className='mx-2 text-center'><Link href="/licensing">License</Link></p>
+        <p className='mx-2 text-center'><Link href="/contact">Contact</Link></p>
+      </div>
+
+      {/*Divider*/}
+      <div className='flex w-full justify-center'>
+        <Divider className='bg-white w-full mt-2' />
+      </div>
+
+      {/*Copyright*/}
+      <p className='text-white text-center mt-2'>&#169; 2025 3dherbarium.net</p>
+
+    </section>
+
+  </footer>
 }

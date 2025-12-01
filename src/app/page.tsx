@@ -15,7 +15,7 @@ export default async function Page() {
 
   return <>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"></meta>
-    <meta name="description" content="A digital herbarium featuring collections of annotated 3D models of plants, viewable in both augmented and virtual reality"></meta>
+    <meta name="description" content="The New Home of the World's First 3D Digital Herbarium"></meta>
 
     <title>3D Digital Herbarium</title>
 

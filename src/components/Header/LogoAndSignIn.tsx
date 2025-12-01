@@ -40,7 +40,7 @@ export default function LogoAndSignIn() {
 
     return <NavbarContent className="hidden lg:flex pl-[0.5vw]" justify="end">
             <Link href='/' aria-label="Go to the home page">
-                <Image src="../../../libLogo.svg" width={70} height={70} alt="Logo" className="pt-[3px]" />
+                <Image src="/icons/whiteHome.svg" width={35} height={70} alt="Logo" className="pt-[3px]" />
             </Link>
             {!session &&<Button variant='ghost' color='secondary' onClick={() => signIn()}>Sign In</Button>}
             {

@@ -17,18 +17,11 @@ const About = async () => <>
 
   <Header pageRoute='collections' headerTitle='About' />
 
-  <h1 className='text-2xl dark:text-white xl:ml-[12.5%] my-5 font-medium text-center xl:text-left'>About the 3D Digital Herbarium</h1>
+  <h1 className='text-3xl dark:text-white xl:ml-[12.5%] mt-5 mb-12 font-medium text-center xl:text-left'>About the 3D Digital Herbarium</h1>
 
   <article className='flex flex-col w-full'>
 
-    <section className='flex flex-col xl:flex-row xl:w-[75%] w-full items-center justify-between m-auto xl:mb-12'>
-
-      <section id='humboldt-now-video' className='flex flex-col justify-center items-center rounded h-[75vh] w-full max-h-[900px] xl:mr-20'>
-        <div className='w-full h-full rounded'>
-          <iframe className='w-full h-full rounded' src='https://www.youtube.com/embed/kUW6duHD2e8?si=n7gDhKkDOyMdbGac&autoplay=1&mute=1' title='YouTube video player' frameBorder='0' allowFullScreen></iframe>
-        </div>
-        <cite className='italic text-center mt-2 text-black dark:text-white z-10'>Source: <span className='text-[#004C46] dark:text-[#C3D5D1]'><a href='https://www.youtube.com/@CalPolyHumboldt' target='_blank' rel='noopener noreferrer'>@CalPolyHumboldt</a></span> on YouTube</cite>
-      </section>
+    <section className='flex w-full items-center justify-center m-auto xl:mb-12'>
 
       <section className='flex justify-center h-[400px] w-full max-w-[400px] my-12 xl:my-0'>
         <img className='object-fill rounded' src='/emergingTechAward.png' alt='ALA RUSA Best Emerging Tech Award 2024'></img>
@@ -38,8 +31,9 @@ const About = async () => <>
 
     <section className='flex items-center pb-10 text-lg dark:text-white w-[90%] sm:w-[75%] m-auto'>
       <p>
-        The 3D Digital Herbarium is an innovative educational platform created by the Cal Poly Humboldt
-        Library dedicated to bringing the intricate world of botany to life through state-of-the-art 3D modeling.
+        This is the <b>official</b> fork of the world's first 3D Digital Herbarium! Originally developed by AJ Bealum and his team of student assistants 
+        at the Cal Poly Humboldt Library,
+        the 3D Digital Herbarium is an innovative educational platform dedicated to bringing the intricate world of botany to life through state-of-the-art 3D modeling.
         At the heart of our mission is the desire to transform how students learn about flora, transcending traditional boundaries by offering an immersive,
         interactive experience. Our 3D Digital Herbarium is a unique resource, meticulously designed for botany students and enthusiasts alike.
         It features a diverse collection of flora, each represented in stunning three-dimensional detail.
@@ -50,8 +44,8 @@ const About = async () => <>
 
     <section className='flex items-center text-lg pb-10 dark:text-white w-[90%] sm:w-[75%] m-auto'>
       <p>
-        The Library 3D digital herbarium came about through a collaboration with a computer science student&apos;s capstone project and the Cal Poly Humboldt library.
-        After undertaking a project involving plants, they began hiring botany student assistants to help.
+        Since its inception, the 3D Digital Herbarium has garnered significant attention and support, including funding from the Institue of Museums and Libraries (IMLS) and recognition through awards such as the ALA RUSA Best Emerging Tech Award in 2024.
+        These accolades underscore the project&apos;s impact and its potential to revolutionize botanical education.
       </p>
     </section>
 
@@ -59,7 +53,7 @@ const About = async () => <>
       <p>Beyond merely viewing, our platform allows users to interact with these models, rotating and examining plants from every angle.
         This hands-on approach facilitates a deeper understanding of plant morphology and taxonomy, making it an invaluable tool for education and research.
         Looking towards the future, our vision extends beyond botany.
-        We plan to evolve the Cal Poly Humboldt 3D Digital Herbarium into a general comprehensive 3D learning platform.
+        We plan to evolve 3dherbarium.net into a general comprehensive 3D learning platform.
         This expansion will encompass an array of subjects, offering 3D models that cater to a wide spectrum of academic fields and interests.
         Find below a 3D model of a mushroom.
       </p>
@@ -88,7 +82,7 @@ const About = async () => <>
         2112167, 2100237, and 2120019, as well as additional funding from community partners
       </p>
       <br></br>
-      <p>We thank the High Performance Computing Center team at Cal Poly Humboldt, especially Ravi Chalasani, Brian Campbell and John Gerving for their support with NRP installation and application.</p>
+      <p>We thank Ravi Chalasani, Brian Campbell and John Gerving for their support with NRP installation and application.</p>
     </section>
 
   </article>

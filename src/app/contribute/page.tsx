@@ -14,9 +14,7 @@ const Contribute = () => {
         <br></br>
         <p>Thank you for considering contribution!</p>
         <br></br>
-        <p>For financial contributions, click <a href='https://www.justgiving.com/campaign/3dherbarium2024' target='_blank'><u>here</u></a></p>
-        <br></br>
-        <p>For code contributions, check out our <a href='https://github.com/CPH3DH/3dHerbarium' target='_blank'><u>github</u></a></p>
+        <p>For code contributions, check out our <a href='https://github.com/AJDev415/3DHerbarium' target='_blank' rel='noopener noreferrer'><u>github</u></a></p>
       </div>
       <Footer />
     </>

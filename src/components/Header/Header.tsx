@@ -46,8 +46,7 @@ export default function Header (props: SearchHeaderProps) {
     "Home",
     "Collections",
     "Plant.id",
-    "Feed",
-    "Accessibility"
+    "Media"
   ]
 
   const userItems: string[] = [
