@@ -31,7 +31,7 @@ export default function Page() {
                 <p className="mb-12">
                     We are considering offering instances of the 3D herbarium and 3D exhibits4Learning as a SaaS/CMS,
                     allowing institutions or organizations to customize their own 3D digital herbaria as they wish. 
-                    Potential stakeholders should contact ab632@humboldt.edu
+                    Potential stakeholders should contact AJ@3dherbarium.net for more information.
                 </p>
             </main>
             <Foot />

@@ -27,17 +27,15 @@ export default function Foot() {
 
           {/*logo*/}
           <section className="ml-8 mt-6 flex flex-col justify-center items-center">
-            <Link href="/about" rel="noopener" target="_blank">
-              <div className="h-12 relative w-[264px] bottom-[65px] right-[10px]">
-                <Image src="/logos/svg/3dHerbariumWhiteLogoNoBg.svg" alt='Cal Poly Humboldt Logo' width={150} height={0} />
+              <div className="h-12 relative bottom-[65px] right-[10px]">
+                <Image src="/logos/svg/3dHerbariumWhiteLogoNoBg.svg" alt='3D Herbarium Logo' width={150} height={0} />
               </div>
-            </Link>
           </section>
 
-          <div className='flex items-center relative right-[30px] space-x-8'>
-            <Image src="/icons/white/twitter.svg" alt='Twitter Logo' width={25} height={0} />
-            <Image src="/icons/white/instagram.svg" alt='Instagram Logo' width={25} height={0} />
-            <Image src="/icons/white/tiktok.svg" alt='TikTok Logo' width={25} height={0} />
+          <div className='flex items-center relative right-[30px] space-x-6'>
+            <Image src="/icons/white/twitter.svg" alt='Twitter Logo' width={32} height={0} />
+            <Image src="/icons/white/instagram.svg" alt='Instagram Logo' width={32} height={0} />
+            <Image src="/icons/white/tiktok.svg" alt='TikTok Logo' width={32} height={0} />
           </div>
 
         </section>
@@ -50,7 +48,7 @@ export default function Foot() {
       </div>
 
       {/*Copyright*/}
-      <section className='flex justify-between w-full h-2/5 mt-2'>
+      <section className='flex relative justify-between w-full h-2/5 mt-2 z-50'>
         <section className="text-white flex mr-4 justify-around ml-4">
           <p className='mx-4'><Link href="/about">About</Link></p>
           <p className='mx-4'><Link href="/contribute">Contribute</Link></p>
@@ -58,7 +56,7 @@ export default function Foot() {
           <p className='mx-4'><Link href="/contact">Contact</Link></p>
         </section>
 
-        <p className='text-white text-right mr-8'>&#169; 2025 3dherbarium.net</p>
+        <p className='text-white text-right mr-8'>&#169; 2025 3dherbarium.net | 501(c)(3) nonprofit | EIN: 41-2784175</p>
       </section>
 
     </section>
@@ -70,7 +68,7 @@ export default function Foot() {
       {/*Logo*/}
       <div className="flex items-center w-full">
         <div className="h-36 w-full relative">
-          <Image src="/logos/svg/3dHerbariumWhiteLogoNoBg.svg" alt='Cal Poly Humboldt Logo' fill />
+          <Image src="/logos/svg/3dHerbariumWhiteLogoNoBg.svg" alt='3D Herbarium Logo' fill />
         </div>
       </div>
 

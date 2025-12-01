@@ -48,5 +48,5 @@ export const sendErrorEmail = async (route: string, fn: string, errorMessage: st
     Function: ${fn} \n
     Error Message: ${errorMessage}`
 
-    sendHTMLEmail('ab632@humboldt.edu', '3D Herbarium Error', html)
+    sendHTMLEmail('aj@3dherbarium.net', '3D Herbarium Error', html)
 }

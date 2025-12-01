@@ -14,7 +14,7 @@ export default async function sendErrorEmail(message: string, action: string){
 
     await transporter.sendMail({
         from: process.env.EMAIL_FROM,
-        to: 'ab632@humboldt.edu',
+        to: 'aj@3dherbarium.net',
         subject: 'Jira Create/Update Error',
         html: `Jira error message: ${message}<br> ${action}`,
     }).catch((e: any) => console.log(e.message))

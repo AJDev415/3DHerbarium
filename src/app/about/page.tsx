@@ -1,8 +1,7 @@
 /**
  * @file /app/about/page.tsx
  * 
- * @fileoverview the About page containing a video from the Cal Poly Humboldt Youtube video,
- * a non-flora model, and paragraphical information about the project.
+ * @fileoverview the About page 
  */
 
 // Default imports
@@ -29,10 +28,15 @@ const About = async () => <>
 
     </section>
 
-    <section className='flex items-center pb-10 text-lg dark:text-white w-[90%] sm:w-[75%] m-auto'>
+    <section className='flex flex-col pb-10 text-lg dark:text-white w-[90%] sm:w-[75%] m-auto'>
       <p>
-        This is the <b>official</b> fork of the world's first 3D Digital Herbarium! Originally developed by AJ Bealum and his team of student assistants 
-        at the Cal Poly Humboldt Library,
+        This is 3dherbarium.net, the new home of the world's first 3D Digital Herbarium!
+        Please note <b>3dherbarium.org is no longer being actively developed or maintained.</b> For the latest updates, new features, and ongoing support,
+        please visit and use <b>3dherbarium.net</b> instead.
+      </p>
+      <br></br>
+      <p>
+        Originally developed by AJ Bealum and his team of student assistants at a public university library,
         the 3D Digital Herbarium is an innovative educational platform dedicated to bringing the intricate world of botany to life through state-of-the-art 3D modeling.
         At the heart of our mission is the desire to transform how students learn about flora, transcending traditional boundaries by offering an immersive,
         interactive experience. Our 3D Digital Herbarium is a unique resource, meticulously designed for botany students and enthusiasts alike.

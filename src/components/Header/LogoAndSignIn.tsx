@@ -53,10 +53,10 @@ export default function LogoAndSignIn() {
                         <DropdownItem aria-label="dashboard option" key="dashboard" onClick={() => router.push('/dashboard')}>Dashboard</DropdownItem>
                         <DropdownItem aria-label="submit model option" key="modelSubmit" onClick={() => router.push('/modelSubmit')}>Submit 3D Model</DropdownItem>
                         {
-                            isAdministrator && process.env.NEXT_PUBLIC_LOCAL_ENV === 'development' && session.user?.email !== 'ab632@humboldt.edu' &&
+                            isAdministrator && process.env.NEXT_PUBLIC_LOCAL_ENV === 'development' && session.user?.email !== 'aj@3dherbarium.net' &&
                             <DropdownItem aria-label="dev admin option" key="devAdmin" onClick={() => router.push('/admin')}>Admin</DropdownItem>
                         }
-                        {session.user?.email === 'ab632@humboldt.edu' && <DropdownItem aria-label="admin option" key="admin" onClick={() => router.push('/admin')}>Admin</DropdownItem>}
+                        {session.user?.email === 'aj@3dherbarium.net' && <DropdownItem aria-label="admin option" key="admin" onClick={() => router.push('/admin')}>Admin</DropdownItem>}
                         <DropdownItem aria-label="Sign out" key="signOut" onClick={() => signOut()}>Sign Out</DropdownItem>
                     </DropdownMenu>
                 </Dropdown>

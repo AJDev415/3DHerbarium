@@ -165,7 +165,7 @@ export async function POST(request: Request) {
             Confirmation: ${confirmation}`
 
         // Note that this is a nonFatal error catch
-        await Promise.all([sendHTMLEmail(email, "3D Model Submitted", clientEmailHtml), sendHTMLEmail('ab632@humboldt.edu', "3D Model Submitted", adminEmailHtml)])
+        await Promise.all([sendHTMLEmail(email, "3D Model Submitted", clientEmailHtml), sendHTMLEmail('AJ@3dherbarium.net', "3D Model Submitted", adminEmailHtml)])
             .catch(e => console.error(routeHandlerError(path, e.message, "sendHTMLEmail()", 'POST', true)))
 
         // Typical success response
