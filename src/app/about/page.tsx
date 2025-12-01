@@ -30,7 +30,7 @@ const About = async () => <>
 
     <section className='flex flex-col pb-10 text-lg dark:text-white w-[90%] sm:w-[75%] m-auto'>
       <p>
-        This is 3dherbarium.net, the new home of the world's first 3D Digital Herbarium!
+        This is 3dherbarium.net, the new home of the world&apos;s first 3D Digital Herbarium!
         Please note <b>3dherbarium.org is no longer being actively developed or maintained.</b> For the latest updates, new features, and ongoing support,
         please visit and use <b>3dherbarium.net</b> instead.
       </p>
