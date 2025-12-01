@@ -28,7 +28,7 @@ export default function Foot() {
           {/*logo*/}
           <section className="ml-8 mt-6 flex flex-col justify-center items-center">
               <div className="h-12 relative bottom-[65px] right-[10px]">
-                <Image src="/logos/svg/3dHerbariumWhiteLogoNoBg.svg" alt='3D Herbarium Logo' width={150} height={0} />
+                <Image src="/logos/svg/_3dHerbariumWhiteLogoNoBg.svg" alt='3D Herbarium Logo' width={150} height={0} />
               </div>
           </section>
 
