@@ -34,7 +34,10 @@ export default async function Page() {
     return (
         <>
             <Header headerTitle='Submit a 3D Model' pageRoute='modelSubmit' />
-            <ModelSubmitForm />
+            {/* <ModelSubmitForm /> */}
+            <div className="h-[calc(100vh-177px)] flex justify-center items-center">
+                <p>Model contribution is currently being updated our organization is under transition. Please check back later</p>
+            </div>
             <Foot />
         </>
     )

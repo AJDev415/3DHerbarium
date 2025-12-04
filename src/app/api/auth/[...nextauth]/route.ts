@@ -34,18 +34,18 @@ export const authOptions = {
     }),
 
     // Sketchfab
-    SketchfabProvider({
-      clientId: process.env.SKETCHFAB_ID as string,
-      clientSecret: process.env.SKETCHFAB_SECRET as string,
-      allowDangerousEmailAccountLinking: true,
-    }),
+    // SketchfabProvider({
+    //   clientId: process.env.SKETCHFAB_ID as string,
+    //   clientSecret: process.env.SKETCHFAB_SECRET as string,
+    //   allowDangerousEmailAccountLinking: true,
+    // }),
 
     // iNaturalist
-    iNaturalistProvider({
-      clientId: process.env.INATURALIST_ID as string,
-      clientSecret: process.env.INATURALIST_SECRET as string,
-      allowDangerousEmailAccountLinking: true,
-    }),
+    // iNaturalistProvider({
+    //   clientId: process.env.INATURALIST_ID as string,
+    //   clientSecret: process.env.INATURALIST_SECRET as string,
+    //   allowDangerousEmailAccountLinking: true,
+    // }),
 
     // Email
     EmailProvider({
