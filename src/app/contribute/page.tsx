@@ -15,6 +15,8 @@ const Contribute = () => {
         <p>Thank you for considering contribution!</p>
         <br></br>
         <p>For code contributions, check out our <a href='https://github.com/AJDev415/3DHerbarium' target='_blank' rel='noopener noreferrer'><u>github</u></a></p>
+        <br></br>
+        <p>For donations, firstly, thank you! Please follow our social media for updates on our upcoming fundraiser.</p>
       </div>
       <Footer />
     </>
