@@ -11,7 +11,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@auth/core": "^0.34.2",
+    "@auth/core": "^0.41.1",
     "@auth/prisma-adapter": "^2.0.0",
     "@heroui/react": "^2.7.10",
     "@prisma/client": "^5.13.0",
@@ -28,8 +28,8 @@
     "exifreader": "^4.23.7",
     "jszip": "^3.10.1",
     "leaflet": "^1.9.4",
-    "next": "15.3.3",
-    "next-auth": "^4.24.13",
+    "next": "^15.5.7",
+    "next-auth": "^4.24.7",
     "next-ssl-redirect-middleware": "^0.1.5",
     "nodemailer": "^7.0.11",
     "npm": "^11.4.2",
