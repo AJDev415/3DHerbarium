@@ -21,6 +21,6 @@ module.exports = {
         ],
       },
       turbopack: {
-        root: 'C:/Users/abeal/Documents/Code/3DHerbarium'
+        root: process.env.TUROBOPACK_ROOT,
       }
     }
