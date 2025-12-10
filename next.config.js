@@ -20,4 +20,7 @@ module.exports = {
           },
         ],
       },
+      turbopack: {
+        root: 'C:/Users/abeal/Documents/Code/3DHerbarium'
+      }
     }

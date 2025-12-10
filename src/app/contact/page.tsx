@@ -12,10 +12,10 @@ const Contribute = () => {
       <Header headerTitle="contribute" pageRoute="collections" />
       <div className="h-[calc(100vh-177px)] pl-8">
         <br></br>
-        <p>AJ@3dherbarium.net</p>
+        <p>All inquiries can be directed to info@3dherbarium.net</p>
       </div>
       <Footer />
     </>
   )
 }
-export default Contribute;
+export default Contribute

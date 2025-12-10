@@ -47,7 +47,7 @@ export default function HomeModel() {
         <div id='sliderDiv' className='hidden overflow-x-auto lg:flex flex-col w-2/5 h-full pr-[4] bg-black items-center pt-[1%] text-white overflow-y-auto' style={{ transition: "width 1.5s", zIndex: "1" }}>
 
           <p className='text-xl pb-8' >Welcome to the <span className='text-[#FFC72C]'>3D</span> Digital Herbarium</p>
-          <p className='border-b border-solid pb-[2.5%]'>Check out our 3D Models on the Collections page, identify an unknown specimen with Plant.id or see what&apos;s new in the Feed. You can also see interior components of a pine tree below with our newest, experimental feature!</p><br></br>
+          <p className='border-b border-solid pb-[2.5%]'>Check out our 3D Models on the Collections page, identify an unknown specimen with Plant.id or see what&apos;s new in on the Media page. You can also see interior components of a pine tree below with our newest, experimental feature!</p><br></br>
 
           <div className='grid h-1/2 grid-cols-1 grid-rows-3 fade'>
 
