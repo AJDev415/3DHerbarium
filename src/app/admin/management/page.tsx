@@ -27,6 +27,8 @@ export default async function Page() {
     try {
         // Get email from session
         const session = await getServerSession(authOptions).catch(e => serverErrorHandler(path, e.message, "Couldn't get session", "getServerSession()", false))
+
+        if(!session) return <h1>NOT AUTHORIZED</h1>
         const email = session?.user?.email as string
 
         // Get admin record from db
