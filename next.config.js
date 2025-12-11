@@ -21,6 +21,6 @@ module.exports = {
         ],
       },
       turbopack: {
-        root: process.env.TUROBOPACK_ROOT,
+        root: process.env.TURBOPACK_ROOT,
       }
     }
