@@ -35,9 +35,10 @@ export default async function Page() {
         <>
             <Header headerTitle='Submit a 3D Model' pageRoute='modelSubmit' />
             {/* <ModelSubmitForm /> */}
-            <div className="h-[calc(100vh-177px)] flex justify-center items-center">
+            <div className="h-[calc(100vh-177px)] flex flex-col justify-center items-center">
                 <p>The 3D Digital Herbarium is currently transitioning its underlying 3D model infrastructure. This will enable to improve the submission process and enhance the overall user experience.</p>
-                <p>Please check back later for updates.</p>
+                <p>To help enable this effort and find out more about this transition, please visit our <u><a href="/contributions">contributions</a></u> page.</p>
+                <p>We appreciate your patience and understanding during this time of change.</p>
             </div>
             <Foot />
         </>

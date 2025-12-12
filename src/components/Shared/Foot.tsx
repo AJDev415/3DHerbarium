@@ -27,9 +27,9 @@ export default function Foot() {
 
           {/*logo*/}
           <section className="ml-8 mt-6 flex flex-col justify-center items-center">
-              <div className="h-12 relative bottom-[65px] right-[10px]">
-                <Image src="/logos/svg/herbariumWhiteLogoNoBg.svg" alt='3D Herbarium Logo' width={150} height={0} />
-              </div>
+            <div className="h-12 relative bottom-[65px] right-[10px]">
+              <Image src="/logos/svg/herbariumWhiteLogoNoBg.svg" alt='3D Herbarium Logo' width={150} height={0} />
+            </div>
           </section>
 
           <div className='flex items-center relative right-[30px] space-x-6'>
@@ -51,12 +51,15 @@ export default function Foot() {
       <section className='flex relative justify-between w-full h-2/5 mt-2 z-50'>
         <section className="text-white flex mr-4 justify-around ml-4">
           <p className='mx-4'><Link href="/about">About</Link></p>
-          <p className='mx-4'><Link href="/contribute">Contribute</Link></p>
+          <p className='mx-4'><Link href="/contribute">Donate</Link></p>
           <p className='mx-4'><Link href="/licensing">License</Link></p>
           <p className='mx-4'><Link href="/contact">Contact</Link></p>
+          <p className='mx-4'><Link href="/terms">Terms</Link></p>
+          <p className='mx-4'><Link href="/privacy">Privacy</Link></p>
         </section>
 
-        <p className='text-white text-right mr-8'>&#169; 2025 3dherbarium.net | 501(c)(3) nonprofit | EIN: 41-2784175</p>
+        <p className='text-white text-right mr-8 hidden lg:flex'>&#169; 2025 3dherbarium.net | 501(c)(3) nonprofit | EIN: 41-2784175</p>
+        <p className='text-white text-right mr-8 lg:hidden'>&#169; 2025 3dherbarium.net</p>
       </section>
 
     </section>
@@ -85,6 +88,8 @@ export default function Foot() {
         <p className='mx-2 text-center'><Link href="/contribute">Contribute</Link></p>
         <p className='mx-2 text-center'><Link href="/licensing">License</Link></p>
         <p className='mx-2 text-center'><Link href="/contact">Contact</Link></p>
+        <p className='mx-4'><Link href="/terms">Terms</Link></p>
+        <p className='mx-4'><Link href="/privacy">Privacy</Link></p>
       </div>
 
       {/*Divider*/}
