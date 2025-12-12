@@ -65,7 +65,7 @@ export default function Page() {
                     </div>
 
                     <div className="flex flex-col mb-12 w-full justify-center items-center">
-                        <p className="text-2xl my-2">Coalition for Networked Information (CNI) 2024</p>
+                        <p className="text-2xl my-2 text-center">Coalition for Networked Information (CNI) 2024</p>
                         <div className="flex justify-center w-full max-w-[560px]">
                             <iframe
                                 width="100%"
@@ -115,7 +115,7 @@ export default function Page() {
                     </div>
 
                     <div className="flex flex-col mb-12 w-full justify-center items-center">
-                        <p className="text-2xl my-2">When Programmers Need Botanists</p>
+                        <p className="text-2xl my-2 text-center">When Programmers Need Botanists</p>
                         <div className="flex justify-center w-full max-w-[560px]">
                             <iframe
                                 width="100%"
