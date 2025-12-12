@@ -14,9 +14,8 @@ const HomeModel = dynamic(() => import('@/components/Home/model'), { ssr: false 
 export default function HomePageClient() {
 
     const router = useRouter()
-    if (isMobileOrTablet()) router.push('/collections/search')
 
-    useEffect(() => { if (isMobileOrTablet()) router.push('/login') }, [router])
+    useEffect(() => { if (isMobileOrTablet()) router.push('/collections/search') }, [router])
 
     return <HomeModel />
 }
