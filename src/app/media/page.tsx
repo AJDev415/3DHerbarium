@@ -23,14 +23,14 @@ export default function Page() {
 
                     <div className="flex justify-center items-center">
                         <a href="https://x.com/3DHerbarium" target="_blank" rel="noopener noreferrer" className="text-lg">
-                            <Image src="/icons/twitter.svg" width={40} height={40} alt="X Logo" className="inline-block mr-4 my-4" />
+                            <Image src="/icons/x.svg" width={32} height={0} alt="X Logo" className="inline-block mr-4 my-4" />
                         </a>
                         <p>@3DHerbarium </p>
                     </div>
 
                     <div className="flex justify-center items-center">
                         <a href="https://instagram.com/3DHerbarium" target="_blank" rel="noopener noreferrer" className="text-lg">
-                            <Image src="/icons/instagram.svg" width={40} height={40} alt="Instagram Logo" className="inline-block mr-4 my-4" />
+                            <Image src="/icons/instagram.svg" width={42} height={40} alt="Instagram Logo" className="inline-block mr-4 my-4" />
                         </a>
                         <p>@3DHerbarium</p>
                     </div>
