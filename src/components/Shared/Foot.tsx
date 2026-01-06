@@ -58,8 +58,8 @@ export default function Foot() {
           <p className='mx-4'><Link href="/privacy">Privacy</Link></p>
         </section>
 
-        <p className='text-white text-right mr-8 hidden lg:flex'>&#169; 2025 3dherbarium.net | 501(c)(3) nonprofit | EIN: 41-2784175</p>
-        <p className='text-white text-right mr-8 lg:hidden'>&#169; 2025 3dherbarium.net</p>
+        <p className='text-white text-right mr-8 hidden lg:flex'>&#169; 2025-2026 3dherbarium.net | 501(c)(3) nonprofit | EIN: 41-2784175</p>
+        <p className='text-white text-right mr-8 lg:hidden'>&#169; 2025-2026 3dherbarium.net</p>
       </section>
 
     </section>
@@ -98,7 +98,7 @@ export default function Foot() {
       </div>
 
       {/*Copyright*/}
-      <p className='text-white text-center mt-2'>&#169; 2025 3dherbarium.net</p>
+      <p className='text-white text-center mt-2'>&#169; 2025-2026 3dherbarium.net</p>
 
     </section>
 
