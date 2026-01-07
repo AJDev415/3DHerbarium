@@ -2,7 +2,7 @@
  * @fileoverview page containing information on how to contribute to the 3D Digital Herbarium project.
  */
 
-import ContributionFormWrapper from '@/components/Contribution/ContributionFormWrapper'
+// import ContributionFormWrapper from '@/components/Contribution/ContributionFormWrapper'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Shared/Foot'
 
@@ -13,7 +13,7 @@ const Contribute = () => {
       {/* <ContributionFormWrapper /> */}
       <p>If you would like to contribute to the 3D Digital Herbarium project, firstly, thank you!</p>
       <br></br>
-      <p>Help preserve botany history and donate to our <u><a href="https://gofund.me/d5cff183f" rel='noopener noreferrer' target='_blank'>GoFundMe</a></u></p>
+      <p>We are currently transitioning to a new donation platform. In the meantime, you can support us through our <u><a href="https://gofund.me/d5cff183f" rel='noopener noreferrer' target='_blank'>GoFundMe</a></u></p>
     </div>
     <Footer />
   </>
