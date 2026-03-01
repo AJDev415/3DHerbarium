@@ -9,6 +9,7 @@ import Header from '@/components/Header/Header'
 import Footer from '@/components/Shared/Foot'
 
 // Main component
+// Test Push
 const Licensing = () => <>
       <Header headerTitle="contribute" pageRoute="collections" />
       <div className="h-[calc(100vh-177px)] pl-8 pr-8">
