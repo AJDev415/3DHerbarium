@@ -26,6 +26,8 @@ const Viewer: React.FC<ViewerProps> = ({
     const containerRef = useRef<HTMLDivElement | null>(null)
     const rendererRef = useRef<THREE.WebGLRenderer | null>(null)
     const frameIdRef = useRef<number | null>(null)
+    const [isFullscreen, setIsFullscreen] = useState(false)
+    const [isHovered, setIsHovered] = useState(false)
 
     // Loading state for progress bar
     const [isLoading, setIsLoading] = useState(false)
@@ -227,48 +229,110 @@ const Viewer: React.FC<ViewerProps> = ({
         loadModel()
     }, [objUrl, mtlUrl, background]);
 
+    useEffect(() => {
+        const onKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                setIsFullscreen(false)
+            }
+        }
+
+        window.addEventListener("keydown", onKeyDown)
+        return () => window.removeEventListener("keydown", onKeyDown)
+    }, [])
+
+    useEffect(() => {
+        // Ensure the renderer updates when entering/leaving fullscreen layout.
+        window.dispatchEvent(new Event("resize"))
+    }, [isFullscreen])
+
     // container/minHeight calculation kept as before
     const minH = typeof height === "number" ? `${height}px` : height
+    const wrapperStyle = isFullscreen
+        ? {
+            position: "fixed" as const,
+            inset: 0,
+            width: "100vw",
+            height: "100vh",
+            zIndex: 200,
+            background: "#000",
+        }
+        : {
+            position: "absolute" as const,
+            left: 0,
+            top: 0,
+            width: "60%",
+            height: "60%",
+        }
 
     return (
         <div style={{ position: "relative", width, height }}>
             <div
-                ref={containerRef}
-                style={{
-                    width: "100%",
-                    height: "100%",
-                    minHeight: minH,
-                    display: "block",
-                    position: "relative",
-                    overflow: "hidden",
-                }}
-            />
-            {isLoading && (
+                style={wrapperStyle}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+            >
                 <div
-                    aria-hidden
+                    ref={containerRef}
+                    style={{
+                        width: "100%",
+                        height: "100%",
+                        minHeight: minH,
+                        display: "block",
+                        position: "relative",
+                        overflow: "hidden",
+                    }}
+                />
+                <button
+                    type="button"
+                    onClick={() => setIsFullscreen((prev) => !prev)}
+                    title={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+                    aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
                     style={{
                         position: "absolute",
-                        left: 0,
-                        right: 0,
-                        top: 0,
-                        height: 6,
-                        background: "rgba(0,0,0,0.12)",
-                        zIndex: 50,
+                        top: 8,
+                        right: 8,
+                        opacity: isHovered ? 1 : 0,
+                        pointerEvents: isHovered ? "auto" : "none",
+                        transition: "opacity 160ms ease",
+                        zIndex: 120,
+                        border: "1px solid rgba(255,255,255,0.4)",
+                        borderRadius: 6,
+                        padding: "4px 8px",
+                        fontSize: 11,
+                        lineHeight: 1,
+                        background: "rgba(0,0,0,0.55)",
+                        color: "#fff",
+                        cursor: "pointer",
                     }}
                 >
+                    {isFullscreen ? "Exit" : "Full"}
+                </button>
+                {isLoading && (
                     <div
+                        aria-hidden
                         style={{
-                            width: `${loadingProgress}%`,
-                            height: "100%",
-                            background: "#29a3ff",
-                            transition: "width 120ms linear",
+                            position: "absolute",
+                            left: 0,
+                            right: 0,
+                            top: 0,
+                            height: 6,
+                            background: "rgba(0,0,0,0.12)",
+                            zIndex: 100,
                         }}
-                    />
-                </div>
-            )}
+                    >
+                        <div
+                            style={{
+                                width: `${loadingProgress}%`,
+                                height: "100%",
+                                background: "#29a3ff",
+                                transition: "width 120ms linear",
+                            }}
+                        />
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
 
 export default Viewer;
-// ...existing code...

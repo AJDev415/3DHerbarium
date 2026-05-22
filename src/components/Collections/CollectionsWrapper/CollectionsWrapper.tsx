@@ -47,21 +47,28 @@ export default function MainWrap(props: CollectionsWrapperProps) {
   const [isSelected, setIsSelected] = useState(true)
 
   // Dynamic sizes
-  const dynamicSizes = {
-    viewWidthInPx: window.outerWidth,
-    viewportHeightInPx: window.outerHeight + 200,
-    swiperHeight: window.outerHeight - 96,
-    imgHeight: window.outerHeight - 208
+  const getSizes = () => {
+    const viewportWidth = typeof window === 'undefined' ? 0 : window.outerWidth
+    const viewportHeight = typeof window === 'undefined' ? 0 : window.outerHeight
+
+    return {
+      viewWidthInPx: viewportWidth,
+      viewportHeightInPx: viewportHeight + 200,
+      swiperHeight: viewportHeight - 96,
+      imgHeight: viewportHeight - 208
+    }
   }
 
   // Sizes object, resize handler
-  const [sizes, setSizes] = useState<any>(dynamicSizes)
-  window.onresize = () => setSizes({
-    viewWidthInPx: window.outerWidth,
-    viewportHeightInPx: window.outerHeight + 200,
-    swiperHeight: window.outerHeight - 96,
-    imgHeight: window.outerHeight - 208
-  })
+  const [sizes, setSizes] = useState<any>(getSizes)
+  useEffect(() => {
+    const updateSizes = () => setSizes(getSizes())
+
+    updateSizes()
+    window.addEventListener('resize', updateSizes)
+
+    return () => window.removeEventListener('resize', updateSizes)
+  }, [])
 
   // Initial media state and reducer
   const initialMediaState = { modelChecked: true, observationsChecked: false, photosChecked: false, scale: false }
