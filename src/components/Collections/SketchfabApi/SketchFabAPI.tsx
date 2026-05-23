@@ -28,9 +28,7 @@ import Herbarium from '@/functions/client/utils/HerbariumClass'
 import sketchFabApiReducer from '@/functions/client/reducers/SketchfabApiDataReducer'
 import Annotation from './Annotation'
 import FullPageError from '../../Error/FullPageError'
-import dynamic from 'next/dynamic'
-
-const ModelViewer = dynamic(() => import('./ModelViewer'), {ssr: false})
+import ModelViewer from './ModelViewer'
 
 // Exported context
 export const SketchfabApiContext = createContext<sketchfabApiContext | ''>('')
@@ -88,7 +86,11 @@ export default function SFAPI(props: { numberOfAnnotations: number, annotations:
   const sketchfabProviderValue: sketchfabApiContext = { sketchfabApi, sketchfabApiDispatch }
 
   // Initialize model viewer and instantiate herbarium specimen object; initialize annotations and event listeners; handle photo source if selected annotation is a photo annotation
-  useEffect(() => fn.initializeCollections(new Sketchfab(modelViewer.current), successObj, successObjDesktop, sRef, wrapperProps, sketchfabApiDispatch), []) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (!modelViewer.current) return
+
+    fn.initializeCollections(new Sketchfab(modelViewer.current), successObj, successObjDesktop, sRef, wrapperProps, sketchfabApiDispatch)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => fn.initializeAnnotationsAndListeners(sketchfabApi, sketchfabApiDispatch, annotationSwitch, annotationSwitchMobile, annotationSwitchWrapper, mobileAnnotationSwitchWrapper, annotationSelectWrapper), [sketchfabApi.api, sketchfabApi.annotations, sketchfabApi.s])
   useEffect(() => fn.photoSrcChangeHandler(sketchfabApi, sketchfabApiDispatch), [sketchfabApi.index]) // eslint-disable-line react-hooks/exhaustive-deps
 
