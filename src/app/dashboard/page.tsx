@@ -1,4 +1,4 @@
-import { getServerSession } from "next-auth/next"
+import { getServerSession } from "next-auth"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import Foot from "@/components/Shared/Foot"
 import { getPendingModels } from "@/functions/server/queries"

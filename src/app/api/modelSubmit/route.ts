@@ -9,7 +9,7 @@
 // Imports
 import { prismaClient } from "@/functions/server/queries"
 import { ModelUploadResponse } from '@/ts/types'
-import { getServerSession } from "next-auth/next"
+import { getServerSession } from "next-auth"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import { redirect } from "next/navigation"
 import { mkdir, readFile, writeFile } from "fs/promises"

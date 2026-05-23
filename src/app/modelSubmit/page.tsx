@@ -5,7 +5,7 @@
  */
 
 // Typical imports
-import { getServerSession } from "next-auth/next"
+import { getServerSession } from "next-auth"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import { redirect } from "next/navigation"
 import { serverErrorHandler } from "@/functions/server/error"

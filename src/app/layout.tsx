@@ -9,6 +9,7 @@ import { Providers } from "./providers"
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 import { userIsAdmin } from "@/functions/server/queries"
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import { cookies } from 'next/headers'
 
 // Default imports
@@ -20,7 +21,7 @@ import Script from "next/script"
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
 
   // Get session
-  const session = await getServerSession()
+  const session = await getServerSession(authOptions)
 
   // Check for an authenticated enironment
   if (process.env.AUTH === 'true') {
