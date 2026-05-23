@@ -24,15 +24,25 @@ export default function SubHeader(props: { state: SearchPageState, setState: Dis
   const modeledByList = state.modeledByList as string[]
   const annotatedByList = state.annotatedByList as string[]
 
-  return <Navbar isBordered className="hidden md:flex z-0 w-full bg-[#00856A] dark:bg-[#212121]">
+  return <Navbar
+    isBordered
+    className="hidden md:flex z-0 w-full bg-[#00856A] dark:bg-[#212121]"
+    classNames={{ wrapper: "py-2 px-4" }}
+  >
 
-    <NavbarContent>
+    <NavbarContent className="w-full">
 
       <NavbarMenuItem>
-        <Button aria-label='Contribute a 3D model' color='primary' className="hidden lg:inline-block w-[200px]" onClick={() => router.push('/modelSubmit')}>Contribute a 3D Model</Button>
+        <Button
+          aria-label='Contribute a 3D model'
+          className="hidden lg:inline-block w-[200px] bg-[#004C46] text-white hover:bg-[#00665f] rounded-xl font-semibold"
+          onClick={() => router.push('/modelSubmit')}
+        >
+          Contribute a 3D Model
+        </Button>
       </NavbarMenuItem>
 
-      <div className="flex w-full gap-4 justify-center lg:justify-end h-full items-center">
+      <div className="ml-auto flex gap-4 justify-end h-full items-center">
 
         <div className="mr-2 flex justify-center items-center">
           <label className="text-white mr-2">Include Community Models</label>

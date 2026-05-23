@@ -64,7 +64,11 @@ export default function Header (props: SearchHeaderProps) {
   useEffect(() => {addDarkThemeListener(); return () => removeDarkThemeListener()}, [])
 
   return <>
-      <Navbar isBordered className="justify-between max-w-none bg-[#004C46] dark:bg-[#212121] text-white dark:text-white">
+      <Navbar
+        isBordered
+        className="justify-between max-w-none bg-[#004C46] dark:bg-[#212121] text-white dark:text-white"
+        classNames={{ wrapper: "py-[10px] px-[6px]" }}
+      >
 
         {/* Mobile Menu Toggle */}
 
@@ -97,7 +101,7 @@ export default function Header (props: SearchHeaderProps) {
 
         {/* Large screen link section */}
 
-        <NavbarContent className="hidden lg:flex gap-4 ml-[6%]" justify="center">
+        <NavbarContent className="hidden lg:flex gap-4" justify="center">
           <Links page={props.page} />
         </NavbarContent>
 

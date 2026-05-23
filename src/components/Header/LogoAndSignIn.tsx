@@ -42,7 +42,15 @@ export default function LogoAndSignIn() {
             <Link href='/' aria-label="Go to the home page">
                 <Image src="/icons/whiteHome.svg" width={35} height={70} alt="Logo" className="pt-[3px]" />
             </Link>
-            {!session &&<Button variant='ghost' color='secondary' onClick={() => signIn()}>Sign In</Button>}
+            {!session &&
+                <Button
+                    variant='solid'
+                    className="bg-[#004C46] text-white hover:bg-[#00665f] rounded-xl font-semibold"
+                    onClick={() => signIn()}
+                >
+                    Sign In
+                </Button>
+            }
             {
                 session &&
                 <Dropdown>
