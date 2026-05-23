@@ -30,6 +30,7 @@
     "next": "^15.5.7",
     "next-auth": "^4.24.14",
     "next-ssl-redirect-middleware": "^0.1.5",
+    "nodemailer": "^8.0.7",
     "npm": "^11.4.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
