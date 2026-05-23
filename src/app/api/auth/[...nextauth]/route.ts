@@ -5,7 +5,7 @@
  */
 
 // Typical imports
-import { PrismaAdapter } from "@auth/prisma-adapter"
+import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { Adapter } from "next-auth/adapters";
 import { SessionStrategy } from "next-auth";
 import { prismaClient } from "@/functions/server/queries";
