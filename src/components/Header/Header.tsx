@@ -65,7 +65,6 @@ export default function Header (props: SearchHeaderProps) {
 
   return <>
       <Navbar
-        isBordered
         className="justify-between max-w-none bg-[#004C46] dark:bg-[#212121] text-white dark:text-white"
         classNames={{ wrapper: "py-[10px] px-[6px]" }}
       >
