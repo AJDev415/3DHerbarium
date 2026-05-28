@@ -29,6 +29,7 @@ import sketchFabApiReducer from '@/functions/client/reducers/SketchfabApiDataRed
 import Annotation from './Annotation'
 import FullPageError from '../../Error/FullPageError'
 import ModelViewer from './ModelViewer'
+import AIReference from './AIReference'
 
 // Exported context
 export const SketchfabApiContext = createContext<sketchfabApiContext | ''>('')
@@ -96,6 +97,7 @@ export default function SFAPI(props: { numberOfAnnotations: number, annotations:
 
   // Error state return
   if (sketchfabApi.error) return <FullPageError clientErrorMessage={sketchfabApi.errorMessage as string} />
+  console.log(sketchfabApi.annotations)
 
   // JSX
   return <SketchfabApiContext.Provider value={sketchfabProviderValue}>
@@ -107,7 +109,8 @@ export default function SFAPI(props: { numberOfAnnotations: number, annotations:
 
     <div id="iframeDiv" className="flex bg-black m-auto min-h-[150px] h-full w-full">
       <ModelViewer uid={wrapperProps.model[0].uid} ref={modelViewer} />
-      {sketchfabApi.s && sketchfabApi.annotations && <Annotation sketchfabApi={sketchfabApi} gMatch={gMatch} ref={annotationDiv} />}
+      {sketchfabApi.s && sketchfabApi.annotations && sketchfabApi.annotations.length > 0 && <Annotation sketchfabApi={sketchfabApi} gMatch={gMatch} ref={annotationDiv} />}
+      {sketchfabApi.s && sketchfabApi.annotations && sketchfabApi.annotations.length === 0 && <AIReference species={wrapperProps.model[0].spec_name} />}
     </div >
 
   </SketchfabApiContext.Provider>
