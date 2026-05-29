@@ -20,7 +20,7 @@ import AIReference from "./AIReference"
 // Main JSX
 export default function TaxonomyAndDescription(props:{gMatch: GbifResponse, sketchfabApi: sketchfabApiData}) {
     return (
-        <div className="w-full h-full" id="annotationDivMedia">
+        <div className="w-full h-full" id="annotationDivMedia !text-white">
             <section className="w-full h-[400px] justify-center items-center flex">
                 <AIReference species={props.sketchfabApi.s?.specimen.spec_name} width="w-full" />
             </section>

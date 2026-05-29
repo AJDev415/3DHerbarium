@@ -11,7 +11,7 @@ export default function Geolocation(props: { position: LatLngLiteral, locality?:
             {
                 props.position.lat && props.position.lng &&
 
-                <div className='fade flex w-[99%] mt-[25px] h-fit'>
+                <div className='fade flex w-[99%] mt-[25px] h-fit text-white'>
 
                     <div className='annotationBorder w-[35%] flex text-[1.5rem] justify-center items-center py-[20px] border-r'>
                         <p> Geolocation </p>
