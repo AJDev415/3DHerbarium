@@ -38,7 +38,7 @@ export default function MainWrap(props: CollectionsWrapperProps) {
   // Variable Declarations
   const collectionsWrapperProps = { ...props }
   const searchParams = useSearchParams()
-  const modelHeight = isMobileOrTablet() ? "calc(100vh - 160px)" : "calc(100vh - 216.67px)"
+  const modelHeight = isMobileOrTablet() ? "calc(100vh - 160px)" : "calc(100vh - 214px)"
 
   // User model, community id param, id error state, annotation switch boolean
   const [userModel, setUserModels] = useState<userSubmittal>()
@@ -48,8 +48,8 @@ export default function MainWrap(props: CollectionsWrapperProps) {
 
   // Dynamic sizes
   const getSizes = () => {
-    const viewportWidth = typeof window === 'undefined' ? 0 : window.outerWidth
-    const viewportHeight = typeof window === 'undefined' ? 0 : window.outerHeight
+    const viewportWidth = typeof window === 'undefined' ? 0 : window.innerWidth
+    const viewportHeight = typeof window === 'undefined' ? 0 : window.innerHeight
 
     return {
       viewWidthInPx: viewportWidth,

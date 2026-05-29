@@ -28,6 +28,7 @@ export default function CollectionsHerbariumModel(props: { sizes: any, modelHeig
     const context = useContext(CollectionsContext) as CollectionsWrapperData
     const mediaState = context.mediaState
     const collectionsProps = context.collectionsWrapperProps
+    console.log(props.modelHeight)
 
     return <div className="flex flex-col m-auto" style={{ width: "100vw", maxWidth: props.sizes.viewWidthInPx, margin: "0 auto !important" }}>
         {

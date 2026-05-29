@@ -21,13 +21,13 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ children }) => {
 
   const updateDimensions = (): void => {
     if (!isClient) return;
-    setViewWidthInPx(window.outerWidth);
+    setViewWidthInPx(window.innerWidth);
   };
 
   useEffect(() => {
     if (isClient) {
       window.addEventListener('resize', updateDimensions);
-      setViewWidthInPx(window.outerWidth);
+      setViewWidthInPx(window.innerWidth);
 
       return () => {
         window.removeEventListener('resize', updateDimensions);
