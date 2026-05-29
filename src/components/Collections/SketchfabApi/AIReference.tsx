@@ -24,6 +24,32 @@ interface ChatLine {
 
 const isStringWithText = (value: unknown): value is string => typeof value === 'string' && value.trim().length > 0
 
+const isRateLimitError = (error: unknown): boolean => {
+	if (!error) return false
+
+	if (typeof error === 'string') {
+		const text = error.toLowerCase()
+		return text.includes('rate limit') || text.includes('too many requests') || text.includes('429')
+	}
+
+	if (typeof error === 'object') {
+		const typedError = error as { message?: unknown; status?: unknown; code?: unknown }
+		const message = isStringWithText(typedError.message) ? typedError.message.toLowerCase() : ''
+		const status = String(typedError.status ?? '')
+		const code = String(typedError.code ?? '').toLowerCase()
+
+		return (
+			message.includes('rate limit') ||
+			message.includes('too many requests') ||
+			message.includes('429') ||
+			status === '429' ||
+			code.includes('rate')
+		)
+	}
+
+	return false
+}
+
 const escapeHtml = (value: string): string =>
 	value
 		.replace(/&/g, '&amp;')
@@ -138,7 +164,14 @@ export default function AIReference(props: AIReferenceProps) {
 			} catch (error) {
 				if (!mounted) return
 				console.error(error)
-				setMessages([makeLine('system', 'Unable to load the initial botany fact right now.')])
+				setMessages([
+					makeLine(
+						'system',
+						isRateLimitError(error)
+							? 'PlantBot is busy right now! Try again later.'
+							: 'Unable to load the initial botany fact right now.'
+					)
+				])
 			} finally {
 				if (mounted) setIsInitializing(false)
 			}
@@ -173,7 +206,15 @@ export default function AIReference(props: AIReferenceProps) {
 			])
 		} catch (error) {
 			console.error(error)
-			setMessages((previous) => [...previous, makeLine('system', 'PlantBot request failed. Please try again.')])
+			setMessages((previous) => [
+				...previous,
+				makeLine(
+					'system',
+					isRateLimitError(error)
+						? 'PlantBot is busy right now! Try again later.'
+						: 'PlantBot request failed. Please try again.'
+				)
+			])
 		} finally {
 			setIsLoading(false)
 		}
@@ -184,11 +225,11 @@ export default function AIReference(props: AIReferenceProps) {
 		containerRef.current.scrollTop = containerRef.current.scrollHeight
 	}, [messages, isLoading, isInitializing])
 
-	if(process.env.NEXT_PUBLIC_NODE_ENV === 'development') {
-		return <section className={`w-[40%] h-full min-h-0 flex flex-col text-[#F5F3E7] ${className}`.trim()} aria-label='PlantBot reference chat'>
-			<div className='flex justify-center items-center h-full text-white'>Plantbot panel appears here in production builds</div>
-		</section>
-	}
+	// if(process.env.NEXT_PUBLIC_NODE_ENV === 'development') {
+	// 	return <section className={`w-[40%] h-full min-h-0 flex flex-col text-[#F5F3E7] ${className}`.trim()} aria-label='PlantBot reference chat'>
+	// 		<div className='flex justify-center items-center h-full text-white'>Plantbot panel appears here in production builds</div>
+	// 	</section>
+	// }
 
 	return (
 		<section className={`w-[40%] h-full min-h-0 flex flex-col text-[#F5F3E7] ${className}`.trim()} aria-label='PlantBot reference chat'>
@@ -209,7 +250,7 @@ export default function AIReference(props: AIReferenceProps) {
 				ref={containerRef}
 				className='w-full flex-1 min-h-0 overflow-y-auto overflow-x-hidden rounded border border-[#57B7A8] bg-[#081512] p-3'
 			>
-				{isInitializing && <p className='text-sm text-[#F5F3E7]'>Loading initial botany fact...</p>}
+				{isInitializing && <p className='text-sm text-[#F5F3E7]'>Loading a fun botany fact...</p>}
 
 				{!isInitializing && messages.length === 0 && (
 					<p className='text-sm text-[#F5F3E7]'>PlantBot is ready. Ask a botany question to begin.</p>

@@ -67,7 +67,7 @@ export const instantiateHerbarium = async (sRef: MutableRefObject<Herbarium | un
  * @param annotationSwitchWrapper 
  * @param mobileAnnotationSwitchWrapper 
  */
-export const initializeAnnotationsAndListeners = (sketchfabApi: sketchfabApiData, sketchfabApiDispatch: Dispatch<sketchfabApiReducerAction>, annotationSwitch: HTMLInputElement, annotationSwitchMobile: HTMLInputElement, annotationSwitchWrapper: EventListener, mobileAnnotationSwitchWrapper: EventListener, annotationSelectWrapper: Function) => {
+export const initializeAnnotationsAndListeners = (sketchfabApi: sketchfabApiData, sketchfabApiDispatch: Dispatch<sketchfabApiReducerAction>, annotationSwitch: HTMLInputElement | null, annotationSwitchMobile: HTMLInputElement | null, annotationSwitchWrapper: EventListener, mobileAnnotationSwitchWrapper: EventListener, annotationSelectWrapper: Function) => {
 
     // This block only needs to run once everything has loaded
     if (sketchfabApi.s && sketchfabApi.annotations && sketchfabApi.api) {
@@ -138,9 +138,9 @@ export const createRemainingAnnotations = (sketchfabApi: sketchfabApiData, dispa
  * @param annotationSwitchWrapper 
  * @param mobileAnnotationSwitchWrapper 
  */
-export const addAnnotationSwitchListeners = (annotationSwitch: HTMLInputElement, annotationSwitchMobile: HTMLInputElement, annotationSwitchWrapper: EventListener, mobileAnnotationSwitchWrapper: EventListener) => {
-    annotationSwitch.addEventListener("change", annotationSwitchWrapper)
-    annotationSwitchMobile.addEventListener("change", mobileAnnotationSwitchWrapper)
+export const addAnnotationSwitchListeners = (annotationSwitch: HTMLInputElement | null, annotationSwitchMobile: HTMLInputElement | null, annotationSwitchWrapper: EventListener, mobileAnnotationSwitchWrapper: EventListener) => {
+    if (annotationSwitch) annotationSwitch.addEventListener("change", annotationSwitchWrapper)
+    if (annotationSwitchMobile) annotationSwitchMobile.addEventListener("change", mobileAnnotationSwitchWrapper)
 }
 
 /**

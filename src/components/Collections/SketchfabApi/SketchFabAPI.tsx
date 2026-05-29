@@ -63,8 +63,8 @@ export default function SFAPI(props: { numberOfAnnotations: number, annotations:
   const annotationDiv = useRef<HTMLDivElement>(undefined)
 
   // Direct dom references to annotation switches
-  const annotationSwitch = document.getElementById("annotationSwitch") as HTMLInputElement
-  const annotationSwitchMobile = document.getElementById("annotationSwitchMobileHidden") as HTMLInputElement
+  const annotationSwitch = document.getElementById("annotationSwitch") as HTMLInputElement | null
+  const annotationSwitchMobile = document.getElementById("annotationSwitchMobileHidden") as HTMLInputElement | null
 
   // Annotation switch wrappers; annotationSelectWrapper
   const annotationSwitchWrapper = (event: Event) => fn.annotationSwitchListener(event, sketchfabApi, modelViewer, annotationDiv)
