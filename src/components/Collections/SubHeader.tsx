@@ -38,7 +38,7 @@ export default function CollectionsSubheader(props: { isSelected: boolean, setIs
 
                 {mediaState.scale && <Switch className='mr-6 whitespace-nowrap' color='secondary'>Scale (cm)</Switch>}
 
-                <label htmlFor="annotationSwitch" className="inline-flex items-center gap-2 pr-[2.5%] cursor-pointer">
+                {!!collectionsProps.annotations?.length && <label htmlFor="annotationSwitch" className="inline-flex items-center gap-2 pr-[2.5%] cursor-pointer">
                     <input
                         id="annotationSwitch"
                         aria-label="Toggle annotations"
@@ -49,7 +49,7 @@ export default function CollectionsSubheader(props: { isSelected: boolean, setIs
                     />
                     <span className="relative inline-block h-5 w-10 rounded-full bg-white/35 transition-colors peer-checked:bg-[#004C46] after:absolute after:left-0.5 after:top-0.5 after:h-4 after:w-4 after:rounded-full after:bg-white after:transition-transform after:content-[''] peer-checked:after:translate-x-5" />
                     <span className="text-white">Annotations</span>
-                </label>
+                </label>}
             </section>
         }
     </div>

@@ -185,21 +185,21 @@ export default function AIReference(props: AIReferenceProps) {
 	}, [messages, isLoading, isInitializing])
 
 	if(process.env.NEXT_PUBLIC_NODE_ENV === 'development') {
-		return <section className={`w-[40%] h-full min-h-0 flex flex-col ${className}`.trim()} aria-label='PlantBot reference chat'>
-			<div className='flex justify-center items-center h-full'>Plantbot panel appears here in production builds</div>
+		return <section className={`w-[40%] h-full min-h-0 flex flex-col text-[#F5F3E7] ${className}`.trim()} aria-label='PlantBot reference chat'>
+			<div className='flex justify-center items-center h-full text-white'>Plantbot panel appears here in production builds</div>
 		</section>
 	}
 
 	return (
-		<section className={`w-[40%] h-full min-h-0 flex flex-col ${className}`.trim()} aria-label='PlantBot reference chat'>
+		<section className={`w-[40%] h-full min-h-0 flex flex-col text-[#F5F3E7] ${className}`.trim()} aria-label='PlantBot reference chat'>
 			<div className='mb-2 px-2 min-h-[34px] flex items-center justify-between gap-3'>
-				<h3 className='text-lg font-semibold leading-none flex items-center'>
+				<h3 className='text-lg font-semibold leading-none flex items-center text-white'>
 					{animatedTitle}
 					{showCursor && <span className='ml-0.5 inline-block w-[0.6ch] animate-pulse'>|</span>}
 				</h3>
-				<p className='text-xs opacity-70 text-right whitespace-nowrap leading-none'>
+				<p className='text-xs text-[#F5F3E7] text-right whitespace-nowrap leading-none'>
 					PlantBot is powered by{' '}
-					<a href='https://gemini.google.com' target='_blank' rel='noopener noreferrer' className='underline hover:opacity-100'>
+					<a href='https://gemini.google.com' target='_blank' rel='noopener noreferrer' className='text-white underline hover:text-[#F5F3E7]'>
 						Gemini
 					</a>
 				</p>
@@ -207,12 +207,12 @@ export default function AIReference(props: AIReferenceProps) {
 
 			<div
 				ref={containerRef}
-				className='w-full flex-1 min-h-0 overflow-y-auto overflow-x-hidden rounded border border-[#004C46] bg-black/80 p-3'
+				className='w-full flex-1 min-h-0 overflow-y-auto overflow-x-hidden rounded border border-[#57B7A8] bg-[#081512] p-3'
 			>
-				{isInitializing && <p className='text-sm opacity-80'>Loading initial botany fact...</p>}
+				{isInitializing && <p className='text-sm text-[#F5F3E7]'>Loading initial botany fact...</p>}
 
 				{!isInitializing && messages.length === 0 && (
-					<p className='text-sm opacity-80'>PlantBot is ready. Ask a botany question to begin.</p>
+					<p className='text-sm text-[#F5F3E7]'>PlantBot is ready. Ask a botany question to begin.</p>
 				)}
 
 				{messages.map((line) => {
@@ -224,17 +224,17 @@ export default function AIReference(props: AIReferenceProps) {
 							key={line.id}
 							className={`mb-3 rounded p-3 ${
 								isEntry
-									? 'bg-[#0A1F1B] border border-[#004C46]'
+									? 'bg-[#103128] border border-[#2E7A6C] text-[#F5F3E7]'
 									: isResponse
-										? 'bg-[#12251E] border border-[#2E7A6C]'
-										: 'bg-[#111111] border border-[#333333]'
+										? 'bg-[#0B1F1A] border border-[#57B7A8] text-white'
+										: 'bg-[#1B1B1B] border border-[#616161] text-[#F5F3E7]'
 							}`}
 						>
-							<p className='mb-1 text-xs font-semibold tracking-wide uppercase opacity-80'>
+							<p className='mb-1 text-xs font-semibold tracking-wide uppercase text-[#F5F3E7]'>
 								{isEntry ? 'You' : isResponse ? 'PlantBot' : 'System'}
 							</p>
 							<p
-								className='text-sm break-words leading-relaxed'
+								className='text-sm text-[#F5F3E7] break-words leading-relaxed'
 								dangerouslySetInnerHTML={{ __html: renderMarkdownLikeText(line.text) }}
 							/>
 						</article>
@@ -242,9 +242,9 @@ export default function AIReference(props: AIReferenceProps) {
 				})}
 
 				{isLoading && (
-					<article className='mb-3 rounded p-3 bg-[#12251E] border border-[#2E7A6C]'>
-						<p className='mb-1 text-xs font-semibold tracking-wide uppercase opacity-80'>PlantBot</p>
-						<p className='text-sm whitespace-pre-wrap break-words leading-relaxed'>Thinking...</p>
+					<article className='mb-3 rounded p-3 bg-[#0B1F1A] border border-[#57B7A8] text-white'>
+						<p className='mb-1 text-xs font-semibold tracking-wide uppercase text-[#F5F3E7]'>PlantBot</p>
+						<p className='text-sm text-[#F5F3E7] whitespace-pre-wrap break-words leading-relaxed'>Thinking...</p>
 					</article>
 				)}
 			</div>
@@ -256,12 +256,12 @@ export default function AIReference(props: AIReferenceProps) {
 					onChange={(event) => setQuery(event.target.value)}
 					placeholder={placeholder}
 					disabled={isLoading || isInitializing}
-					className='w-full rounded border border-[#2E7A6C] bg-black/70 px-3 py-2 text-sm outline-none focus:border-[#57B7A8]'
+					className='w-full rounded border border-[#57B7A8] bg-[#0B1F1A] px-3 py-2 text-sm text-[#F5F3E7] placeholder:text-[#D9D2B0] outline-none focus:border-white'
 				/>
 				<button
 					type='submit'
 					disabled={isLoading || isInitializing || !isStringWithText(query)}
-					className='rounded border border-[#2E7A6C] bg-[#0A1F1B] px-4 py-2 text-sm font-semibold disabled:opacity-50'
+					className='rounded border border-[#57B7A8] bg-[#103128] px-4 py-2 text-sm font-semibold text-[#F5F3E7] hover:bg-[#154238] disabled:opacity-50'
 				>
 					Send
 				</button>
