@@ -99,3 +99,10 @@ export const getAnnotatedAndAnnotationModelsMigrationArray = (d1: string, d2: st
     modelAnnotationMigration(d1, d2)
 ]
 
+export const getAiAnnotationModelsMigrationArray = (d1: string, d2: string) => [
+    speciesMigration(d1, d2),
+    specimenMigration(d1, d2),
+    annotatedModelMigration(d1, d2),
+    imageSetMigration(d1, d2),
+    softwareMigration(d1, d2),
+]

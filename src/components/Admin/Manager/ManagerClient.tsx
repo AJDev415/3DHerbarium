@@ -17,7 +17,7 @@ import { userSubmittal } from "@prisma/client"
 import { useState } from "react"
 import { Button } from "@heroui/react"
 import { Models } from "@/ts/types"
-import { migrateAnnotatedAndAnnotationModels, migrateModelAnnotationToAnnotatedModel, updateThumbnail } from "@/functions/server/manager"
+import { migrateAiAnnotationModels, migrateAnnotatedAndAnnotationModels, migrateModelAnnotationToAnnotatedModel, updateThumbnail } from "@/functions/server/manager"
 
 // Default imports
 import DataTransferModal from "../../Shared/DataTransferModal"
@@ -52,7 +52,7 @@ export default function ManagerClient(props: { pendingModels: string, katId: str
     // Task handlers
     const thumbnailHandler = (uid: string, community: boolean) => dataTransferHandler(initializeDataTransferHandler, terminateDataTransferHandler, updateThumbnail, [uid, community], "Updating thumbnail")
     const approveWrapper = (args: any[]) => dataTransferHandler(initializeDataTransferHandler, terminateDataTransferHandler, fn.approveCommunityModel, args, "Approving Community Model")
-    const migrateWrapper = () => dataTransferHandler(initializeDataTransferHandler, terminateDataTransferHandler, migrateAnnotatedAndAnnotationModels, [], 'Migrating annotated 3D models')
+    const migrateWrapper = () => dataTransferHandler(initializeDataTransferHandler, terminateDataTransferHandler, migrateAiAnnotationModels, [], 'Migrating AI annotation models')
     const migrateModelAnnotationWrapper = () => dataTransferHandler(initializeDataTransferHandler, terminateDataTransferHandler, migrateModelAnnotationToAnnotatedModel, [annotationModelUid], "Migrating model annotation")
 
     return <>
@@ -90,8 +90,8 @@ export default function ManagerClient(props: { pendingModels: string, katId: str
             </div>
 
             <div className="h-full w-1/3 flex flex-col items-center border border-[#004C46]">
-                <label className='text-2xl block mb-2'>Annotated Model Migration</label>
-                <Button className="bg-[#004C46] mt-14" onPress={migrateWrapper}>Migrate annotated 3D models</Button>
+                <label className='text-2xl block mb-2'>AI Annotated Model Migration</label>
+                <Button className="bg-[#004C46] mt-14 text-white" onPress={migrateWrapper}>Migrate AI annotated 3D models</Button>
             </div>
 
             <div className="h-full w-1/3 flex flex-col items-center border border-[#004C46]">
@@ -102,7 +102,7 @@ export default function ManagerClient(props: { pendingModels: string, katId: str
                     className={`w-3/5 max-w-[500px] rounded-xl mb-4 dark:bg-[#27272a] dark:hover:bg-[#3E3E47] h-[42px] px-4 text-[14px] outline-[#004C46]`}
                     placeholder="Enter Model Annotation Uid">
                 </input>
-                <Button className="bg-[#004C46]" onPress={migrateModelAnnotationWrapper} isDisabled={annotationModelUid ? false : true}>Migrate annotated 3D models</Button>
+                <Button className="bg-[#004C46] text-white" onPress={migrateModelAnnotationWrapper} isDisabled={annotationModelUid ? false : true}>Migrate annotated 3D models</Button>
             </div>
         </div>
         {pendingModels && <PendingModelsAdmin pendingModels={pendingModels as unknown as Models[]} approveWrapper={approveWrapper} />}

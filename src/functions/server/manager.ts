@@ -11,7 +11,7 @@ import { configureThumbnailDir } from "../client/utils"
 import { serverActionCatch, serverActionErrorHandler } from "./error"
 import { autoWriteArrayBuffer } from "./files"
 import { updateThumbUrl } from "./queries"
-import { getAnnotatedAndAnnotationModelsMigrationArray } from "./migrations/annotatedAndAnnotation"
+import { getAnnotatedAndAnnotationModelsMigrationArray, getAiAnnotationModelsMigrationArray } from "./migrations/annotatedAndAnnotation"
 import { readdir } from "fs/promises"
 
 // Import all migration logic
@@ -117,12 +117,28 @@ export const migrateAnnotatedAndAnnotationModels = async () => {
     catch (e: any) { serverActionCatch(e.message) }
 }
 
-/**
- * 
- * @param path path of directory to read
- * @returns ideally, a string[] containing all file names in a given directory; returns empty string on error
- */
-export const readDirectory = async (path: string) => {
-    try { return await readdir(path).catch(e => serverActionErrorHandler(e.message, 'readdir(path)', "Directory not found")) }
-    catch (e: any) { return [] }
+export const migrateAiAnnotationModels = async () => {
+    try {
+        // Determine databased for migration based on env
+        // const local = process.env.LOCAL_ENV
+        // const d1 = local === 'development' ? 'Development' : 'Test'
+        // const d2 = local === 'development' ? 'Test' : 'Production'
+        const d1 = 'Development'
+        const d2 = 'Production'
+        // Get transaction array and await transaction
+        const migrationTransactionArray = getAiAnnotationModelsMigrationArray(d1, d2)
+        await prisma.$transaction(migrationTransactionArray).catch(e => serverActionErrorHandler(e.message, 'prisma.$transaction(transaction)', "Couldn't migrate AI annotation models"))
+        return `AI annotation models from ${d1} database have been migrated to ${d2} database`
+    }
+    catch (e: any) { serverActionCatch(e.message) }
 }
+
+    /**
+     * 
+     * @param path path of directory to read
+     * @returns ideally, a string[] containing all file names in a given directory; returns empty string on error
+     */
+    export const readDirectory = async (path: string) => {
+        try { return await readdir(path).catch(e => serverActionErrorHandler(e.message, 'readdir(path)', "Directory not found")) }
+        catch (e: any) { return [] }
+    }
