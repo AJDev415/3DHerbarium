@@ -97,9 +97,11 @@ export const createFirstAnnotation = (sketchfabApi: sketchfabApiData, dispatch: 
     const position = JSON.parse(sketchfabApi.s?.model.annotationPosition as string)
 
     // Create annotation from position
-    sketchfabApi.api.createAnnotationFromScenePosition(position[0], position[1], position[2], 'Taxonomy and Description', '', (e: any, index: any) => {
-        if (e) dispatch({ type: 'error', errorMessage: e.message + 'Annotation', index })
-    })
+    if (sketchfabApi.s?.annotations.annotations.length) {
+        sketchfabApi.api.createAnnotationFromScenePosition(position[0], position[1], position[2], 'Taxonomy and Description', '', (e: any, index: any) => {
+            if (e) dispatch({ type: 'error', errorMessage: e.message + 'Annotation', index })
+        })
+    }
 }
 
 /**
@@ -126,7 +128,7 @@ export const createRemainingAnnotations = (sketchfabApi: sketchfabApiData, dispa
 
     // Go to the parameterized or first annotation
     const annotationToGoTo = annotationNumParam ? annotationNumParam - 1 : 0
-    if (!isMobileOrTablet()) sketchfabApi.api.gotoAnnotation(annotationToGoTo, { preventCameraAnimation: true, preventCameraMove: false }, (e: any, index: any) => {
+    if (!isMobileOrTablet() && sketchfabApi.s?.annotations.annotations.length) sketchfabApi.api.gotoAnnotation(annotationToGoTo, { preventCameraAnimation: true, preventCameraMove: false }, (e: any, index: any) => {
         if (e) dispatch({ type: 'error', errorMessage: e.message + 'Annotation', index })
     })
 }
@@ -234,7 +236,7 @@ export const setImageFromNfs = async (url: string, dispatch: Dispatch<sketchfabA
     var src; dispatch({ type: 'setPhotoLoading' })
 
     // Get appropriate path and await buffer
-    const path =  `${process.env.NEXT_PUBLIC_DATA_PATH}${url}`
+    const path = `${process.env.NEXT_PUBLIC_DATA_PATH}${url}`
     const response = await fetch(`/api/nfs?path=${path}`)
 
     // If buffer is found, convert to blob and create object url, else use default photo (not found)
@@ -254,8 +256,8 @@ export const photoSrcChangeHandler = (sketchfabApi: any, sketchfabApiDispatch: D
 
     if (!!sketchfabApi.index && sketchfabApi.annotations && sketchfabApi.annotations[sketchfabApi.index - 1].annotation_type === 'photo') {
 
-        if (isDataStoragePhoto(sketchfabApi)) {setImageFromNfs((sketchfabApi.annotations[sketchfabApi.index - 1].annotation as photo_annotation)?.url, sketchfabApiDispatch)}
-        else {sketchfabApiDispatch({ type: 'setStringOrNumber', field: 'imgSrc', value: sketchfabApi.annotations[sketchfabApi.index - 1].url as string }); console.log('ELSE RAN')}
+        if (isDataStoragePhoto(sketchfabApi)) { setImageFromNfs((sketchfabApi.annotations[sketchfabApi.index - 1].annotation as photo_annotation)?.url, sketchfabApiDispatch) }
+        else { sketchfabApiDispatch({ type: 'setStringOrNumber', field: 'imgSrc', value: sketchfabApi.annotations[sketchfabApi.index - 1].url as string }); console.log('ELSE RAN') }
     }
 }
 
@@ -266,12 +268,12 @@ export const photoSrcChangeHandler = (sketchfabApi: any, sketchfabApiDispatch: D
  */
 export const updateLegacyAnnotations = (annotations: any[], uid: string) => {
 
-    const data: {uid: string, annotations: any} = { uid: uid, annotations: [] }
-    
-    annotations.every(annotation => data.annotations.push({title: annotation.name, position: [annotation.position, annotation.eye, annotation.target]}))
-    
+    const data: { uid: string, annotations: any } = { uid: uid, annotations: [] }
+
+    annotations.every(annotation => data.annotations.push({ title: annotation.name, position: [annotation.position, annotation.eye, annotation.target] }))
+
     fetch('/api/reAnnotation', {
-        method: 'PATCH', 
+        method: 'PATCH',
         body: JSON.stringify(JSON.stringify(data)) // Nested object needs to be double stringified
     }).then(res => res.json()).then(json => console.log(json.data))
 }

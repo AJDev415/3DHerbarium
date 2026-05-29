@@ -30,6 +30,7 @@ import Annotation from './Annotation'
 import FullPageError from '../../Error/FullPageError'
 import ModelViewer from './ModelViewer'
 import AIReference from './AIReference'
+import TaxonomyAndDescription from './TaxAndDescription'
 
 // Exported context
 export const SketchfabApiContext = createContext<sketchfabApiContext | ''>('')
@@ -51,7 +52,7 @@ export default function SFAPI(props: { numberOfAnnotations: number, annotations:
   const annotationNumberParam = annotationParam && fn.isAnnotationParamValid(annotationParam, props.numberOfAnnotations) ? annotationParam : undefined
 
   // Determine if url param is a model annotation
-  const isModelParam = annotationNumberParam && props.annotations.find(annotation => annotation.annotation_no === parseInt(annotationNumberParam))?.annotation_type === 'model' ? true : false 
+  const isModelParam = annotationNumberParam && props.annotations.find(annotation => annotation.annotation_no === parseInt(annotationNumberParam))?.annotation_type === 'model' ? true : false
 
   // Initial state and reducer
   const initialData: sketchfabApiData = { ...initialState, annotationNumParam: annotationNumberParam }
@@ -63,8 +64,8 @@ export default function SFAPI(props: { numberOfAnnotations: number, annotations:
   const annotationDiv = useRef<HTMLDivElement>(undefined)
 
   // Direct dom references to annotation switches
-  const annotationSwitch = document.getElementById("annotationSwitch") as HTMLInputElement | null
-  const annotationSwitchMobile = document.getElementById("annotationSwitchMobileHidden") as HTMLInputElement | null
+  const annotationSwitch = document.getElementById("annotationSwitch") as HTMLInputElement
+  const annotationSwitchMobile = document.getElementById("annotationSwitchMobileHidden") as HTMLInputElement
 
   // Annotation switch wrappers; annotationSelectWrapper
   const annotationSwitchWrapper = (event: Event) => fn.annotationSwitchListener(event, sketchfabApi, modelViewer, annotationDiv)
@@ -79,7 +80,7 @@ export default function SFAPI(props: { numberOfAnnotations: number, annotations:
   }
 
   // Add annotation loader if the parameter is a model annotation; establish zoom out contraints
-  if(isModelParam) Object.assign(successObj, {annotation: parseInt(annotationNumberParam as string)})
+  if (isModelParam) Object.assign(successObj, { annotation: parseInt(annotationNumberParam as string) })
   const maxZoomOut = wrapperProps.model[0].max_zoom_out ? wrapperProps.model[0].max_zoom_out : 9
 
   // Success object for init method of Sketchfab object (desktop); provider object
@@ -110,7 +111,12 @@ export default function SFAPI(props: { numberOfAnnotations: number, annotations:
     <div id="iframeDiv" className="flex bg-black m-auto min-h-[150px] h-full w-full">
       <ModelViewer uid={wrapperProps.model[0].uid} ref={modelViewer} />
       {sketchfabApi.s && sketchfabApi.annotations && sketchfabApi.annotations.length > 0 && <Annotation sketchfabApi={sketchfabApi} gMatch={gMatch} ref={annotationDiv} />}
-      {sketchfabApi.s && sketchfabApi.annotations && sketchfabApi.annotations.length === 0 && <AIReference species={wrapperProps.model[0].spec_name} />}
+      {
+        sketchfabApi.s && sketchfabApi.annotations && sketchfabApi.annotations.length === 0 &&
+        <section className="w-[40%] h-full flex flex-col justify-center items-center overflow-y-auto">
+          <TaxonomyAndDescription gMatch={gMatch} sketchfabApi={sketchfabApi} />
+        </section>
+      }
     </div >
 
   </SketchfabApiContext.Provider>

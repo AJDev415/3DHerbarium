@@ -15,11 +15,15 @@ import Classification from "./Classification"
 import Profile from "./Profile"
 import ModelData from "./ModelData"
 import Wikipedia from "./Wikipedia"
+import AIReference from "./AIReference"
 
 // Main JSX
 export default function TaxonomyAndDescription(props:{gMatch: GbifResponse, sketchfabApi: sketchfabApiData}) {
     return (
-        <div className="w-full h-fit" id="annotationDivMedia">
+        <div className="w-full h-full" id="annotationDivMedia">
+            <section className="w-full h-[400px] justify-center items-center flex">
+                <AIReference species={props.sketchfabApi.s?.specimen.spec_name} width="w-full" />
+            </section>
             <Classification gMatch={props.gMatch} />
             {
                 props.sketchfabApi.s?.specimen.lat && props.sketchfabApi.s?.specimen.lng &&

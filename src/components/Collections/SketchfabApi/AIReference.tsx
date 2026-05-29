@@ -14,6 +14,7 @@ export interface AIReferenceProps {
 	className?: string
 	title?: string
 	placeholder?: string
+	width?: string
 }
 
 interface ChatLine {
@@ -225,14 +226,14 @@ export default function AIReference(props: AIReferenceProps) {
 		containerRef.current.scrollTop = containerRef.current.scrollHeight
 	}, [messages, isLoading, isInitializing])
 
-	// if(process.env.NEXT_PUBLIC_NODE_ENV === 'development') {
-	// 	return <section className={`w-[40%] h-full min-h-0 flex flex-col text-[#F5F3E7] ${className}`.trim()} aria-label='PlantBot reference chat'>
-	// 		<div className='flex justify-center items-center h-full text-white'>Plantbot panel appears here in production builds</div>
-	// 	</section>
-	// }
+	if(process.env.NEXT_PUBLIC_NODE_ENV === 'development') {
+		return <section className={`w-[40%] h-full min-h-0 flex flex-col text-[#F5F3E7] ${className}`.trim()} aria-label='PlantBot reference chat'>
+			<div className='flex justify-center items-center h-full text-white'>Plantbot panel appears here in production builds</div>
+		</section>
+	}
 
 	return (
-		<section className={`w-[40%] h-full min-h-0 flex flex-col text-[#F5F3E7] ${className}`.trim()} aria-label='PlantBot reference chat'>
+		<section className={`${props.width ?? 'w-[40%]'} h-full min-h-0 flex flex-col text-[#F5F3E7] ${className}`.trim()} aria-label='PlantBot reference chat'>
 			<div className='mb-2 px-2 min-h-[34px] flex items-center justify-between gap-3'>
 				<h3 className='text-lg font-semibold leading-none flex items-center text-white'>
 					{animatedTitle}
