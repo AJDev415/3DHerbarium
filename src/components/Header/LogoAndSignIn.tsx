@@ -55,9 +55,25 @@ export default function LogoAndSignIn() {
                 session &&
                 <Dropdown>
                     <DropdownTrigger>
-                        <Avatar className="cursor-pointer" isFocusable={true} src={session?.user?.image!} name={session?.user?.name!} aria-label="Avatar dropdown menu" />
+                        <Avatar
+                            className="cursor-pointer border border-[#D9D2B0] bg-[#F5F3E7] text-[#004C46] shadow-sm"
+                            isFocusable={true}
+                            src={session?.user?.image!}
+                            name={session?.user?.name!}
+                            aria-label="Avatar dropdown menu"
+                        />
                     </DropdownTrigger>
-                    <DropdownMenu aria-label="Static Actions">
+                    <DropdownMenu
+                        aria-label="Static Actions"
+                        classNames={{
+                            base: "bg-[#F5F3E7] text-[#004C46] border border-[#D9D2B0] shadow-lg",
+                            list: "bg-[#F5F3E7] text-[#004C46]",
+                            emptyContent: "text-[#004C46]"
+                        }}
+                        itemClasses={{
+                            base: "text-[#004C46] data-[hover=true]:bg-[#D9D2B0]/70 data-[pressed=true]:bg-[#D9D2B0]/90"
+                        }}
+                    >
                         <DropdownItem aria-label="dashboard option" key="dashboard" onClick={() => router.push('/dashboard')}>Dashboard</DropdownItem>
                         <DropdownItem aria-label="submit model option" key="modelSubmit" onClick={() => router.push('/modelSubmit')}>Submit 3D Model</DropdownItem>
                         {

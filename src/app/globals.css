@@ -124,21 +124,24 @@ img {
 
 .swiper-button-next,
 .swiper-button-prev {
-  background-color: rgb(245, 243, 231);
-  right: 10px;
-  padding: 30px;
-  color: #000 !important;
-  fill: black !important;
-  stroke: black !important;
-  border-radius: 10px;
-  transition: background-color 0.3s;
-  transform: scale(0.85);
-  width: initial;
-  height: initial;
-  font-size: 3rem;
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
   margin-left: 10px;
   margin-right: 10px;
+  background-color: rgba(245, 243, 231, 0.96);
+  color: #004C46 !important;
+  fill: #004C46 !important;
+  stroke: #004C46 !important;
+  border: 2px solid #004C46;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  transform: scale(0.92);
+  opacity: 0.98;
+  z-index: 20;
 }
 
 .swiper-pagination{
@@ -147,7 +150,15 @@ img {
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-  background-color: rgb(245, 243, 231, 0.8);
+  background-color: rgb(245, 243, 231);
+  transform: scale(0.98);
+  opacity: 1;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 1.1rem;
+  font-weight: 800;
 }
 
 .swiper-slide-custom {
@@ -159,7 +170,9 @@ img {
 
   .swiper-button-next,
   .swiper-button-prev {
-    transform: scale(0.65);
+    width: 2.25rem;
+    height: 2.25rem;
+    transform: scale(0.82);
   }
 }
 

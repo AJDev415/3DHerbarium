@@ -32,7 +32,9 @@ export default function HomeModel() {
   useEffect(() => initializeHomeModel(viewerReadySuccessHandlerWrapper), [])
 
   return <main className='flex flex-col h-full w-full'>
-      <Header headerTitle='Home' pageRoute='collections' />
+      <div className='relative z-[1000]'>
+        <Header headerTitle='Home' pageRoute='collections' />
+      </div>
       <article className='flex h-full'>
 
         <iframe frameBorder="0" id="homeModel" title={"Model Viewer for " + ''}
