@@ -26,6 +26,7 @@ import Links from "./Links"
 import MobileSessionOptions from "./MobileSessionOptions"
 import MobileModelOptions from "./MobileModelOptions"
 import MobileMenuOptions from "./MobileMenuOptions"
+import MobileMenu from "./MobileMenu"
 
 // Main JSX
 export default function Header (props: SearchHeaderProps) {
@@ -36,6 +37,7 @@ export default function Header (props: SearchHeaderProps) {
 
   const [autocompleteOptions, setAutocompleteOptions] = useState<any[]>([])
   const [mobileSearchOpen, setMobileSearchOpen] = useState<boolean>(false)
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
 
   const searchQuery = useRef<string>(undefined)
 
@@ -65,6 +67,8 @@ export default function Header (props: SearchHeaderProps) {
 
   return <>
       <Navbar
+        isMenuOpen={isMenuOpen}
+        onMenuOpenChange={setIsMenuOpen}
         className="justify-between max-w-none bg-[#004C46] dark:bg-[#212121] text-white dark:text-white"
         classNames={{ wrapper: "py-[10px] px-[6px]" }}
       >
@@ -72,7 +76,27 @@ export default function Header (props: SearchHeaderProps) {
         {/* Mobile Menu Toggle */}
 
         <NavbarContent className="lg:hidden" justify="start">
-          <NavbarMenuToggle />
+          <NavbarMenuToggle
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            className="text-white"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            icon={(open: boolean) => (
+              <svg
+                aria-hidden="true"
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                {open ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            )}
+          />
         </NavbarContent>
 
         {/* Hidden switch for annotation switch reference */}
@@ -120,41 +144,42 @@ export default function Header (props: SearchHeaderProps) {
 
         <LogoAndSignIn />
 
-
         {/***** MOBILE NAVBAR MENU *****/}
 
-
-        <NavbarMenu className="z-20">
-
-          {/* User section header */}
-
-          <NavbarMenuItem>
-            <h1 className="text-center">User</h1>
-            <Divider />
-          </NavbarMenuItem>
-
-          {/* Mobile session-based options */}
-
-          <MobileSessionOptions session={session} userItems={userItems} />
-
-          {/* Navigation Section Header */}
-
-          <NavbarMenuItem>
-            <h1 className="text-center">Navigation</h1>
-            <Divider />
-          </NavbarMenuItem>
-
-          {/* Static mobile navigation */}
-
-          <MobileMenuOptions menuItems={menuItems} />
-
-          {/* Mobile rendering conditional on whether there is a model */}
-
-          {
-            props.setAnnotationsEnabled &&
-            <MobileModelOptions hasModel={props.hasModel} isSelected={props.annotationsEnabled} setIsSelected={props.setAnnotationsEnabled} />
-          }
-        </NavbarMenu>
       </Navbar >
+      <MobileMenu isOpen={isMenuOpen} />
     </>
 }
+
+
+        // <NavbarMenu className="z-20 border">
+
+        //   {/* User section header */}
+
+        //   <NavbarMenuItem>
+        //     <h1 className="text-center">User</h1>
+        //     <Divider />
+        //   </NavbarMenuItem>
+
+        //   {/* Mobile session-based options */}
+
+        //   <MobileSessionOptions session={session} userItems={userItems} />
+
+        //   {/* Navigation Section Header */}
+
+        //   <NavbarMenuItem>
+        //     <h1 className="text-center">Navigation</h1>
+        //     <Divider />
+        //   </NavbarMenuItem>
+
+        //   {/* Static mobile navigation */}
+
+        //   <MobileMenuOptions menuItems={menuItems} />
+
+        //   {/* Mobile rendering conditional on whether there is a model */}
+
+        //   {
+        //     props.setAnnotationsEnabled &&
+        //     <MobileModelOptions hasModel={props.hasModel} isSelected={props.annotationsEnabled} setIsSelected={props.setAnnotationsEnabled} />
+        //   }
+        // </NavbarMenu>
