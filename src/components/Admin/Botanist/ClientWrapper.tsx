@@ -14,7 +14,7 @@ const Header = dynamic(() => import('@/components/Header/Header'), {ssr: false})
 export default function BotanyClientWrapper(props: { modelsToAnnotate: model[], annotationModels: model[], epic: any, baseModelsForAnnotationModels: model[] }) {
     return <>
         <Header pageRoute="collections" headerTitle="Botany Admin" />
-        <main className="w-full min-h-[calc(100vh-177px)] h-[calc(100vh-177px)] overflow-y-auto"><BotanyClient {...props} /></main>
+        <main className="w-full min-h-[calc(100vh-176px)] h-[calc(100vh-176px)] overflow-y-auto"><BotanyClient {...props} /></main>
         <Foot />
     </>
 }

@@ -30,7 +30,7 @@ export default function CommunityModelWithoutGmatch(props: { communityModel: use
 
 return (
     <>
-        <div className="bg-black flex h-[calc(100vh-177px)] w-full">
+        <div className="bg-black flex h-[calc(100vh-176px)] w-full">
 
             <section className="w-full lg:w-3/5 h-full">
                 <ModelViewer uid={model.modeluid} />

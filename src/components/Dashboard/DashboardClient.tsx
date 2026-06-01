@@ -48,7 +48,7 @@ export default function DashboardClient(props: DashboardClientProps) {
 
     if (!anyModels) {
         return (
-            <div className="flex flex-col min-h-[calc(100vh-177px)] lg:w-full max-h-[calc(100vh-177px)] overflow-hidden items-center justify-center">
+            <div className="flex flex-col min-h-[calc(100vh-176px)] lg:w-full max-h-[calc(100vh-176px)] overflow-hidden items-center justify-center">
                 <p className="text-3xl font-medium">Upload your first 3D model to get started!</p><br></br>
                 <p>
                     <Button className="text-white font-medium"
@@ -62,8 +62,8 @@ export default function DashboardClient(props: DashboardClientProps) {
     }
     return (
         <>
-            <div className="flex min-h-[calc(100vh-177px)] lg:w-full lg:max-h-[calc(100vh-177px)] overflow-hidden">
-                <div className="w-full lg:w-[30%] h-full lg:max-h-[calc(100vh-177px)] overflow-y-auto overflow-x-hidden">
+            <div className="flex min-h-[calc(100vh-176px)] lg:w-full lg:max-h-[calc(100vh-176px)] overflow-hidden">
+                <div className="w-full lg:w-[30%] h-full lg:max-h-[calc(100vh-176px)] overflow-y-auto overflow-x-hidden">
 
                     {
                         props.anyPendingModels &&
@@ -107,7 +107,7 @@ export default function DashboardClient(props: DashboardClientProps) {
                     <ModelViewer uid={viewerUid} />
                 </div>
 
-                <div className="w-[30%] max-h-[calc(100vh-177px)] overflow-y-auto overflow-x-hidden hidden lg:block">
+                <div className="w-[30%] max-h-[calc(100vh-176px)] overflow-y-auto overflow-x-hidden hidden lg:block">
                     <InaturalistDash
                         iNatAccountLinked={props.iNatAccountLinked}
                         tokenExpiration={props.tokenExpiration}

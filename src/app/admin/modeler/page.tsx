@@ -33,7 +33,7 @@ export default async function Page() {
 
     return <>
             <Header pageRoute="/collections" headerTitle='3D Model Admin' />
-            <section className="flex min-h-[calc(100vh-177px)] h-[calc(100vh-177px)]">
+            <section className="flex min-h-[calc(100vh-176px)] h-[calc(100vh-176px)]">
                 <ModelerDash unphotographedSpecimen={modelerSpecimen.specimenToBePhotographed} unModeledSpecimen={modelerSpecimen.specimenToBeModeled} epic={epic}/>
             </section>
             <Foot />

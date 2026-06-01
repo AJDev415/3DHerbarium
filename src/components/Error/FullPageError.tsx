@@ -22,7 +22,7 @@ export default function FullPageError(props: { clientErrorMessage: string }) {
     return (
         <>
             <Header pageRoute="collections" headerTitle='Management' />
-            <main className="flex flex-col !min-h-[calc(100vh-177px)]">
+            <main className="flex flex-col !min-h-[calc(100vh-176px)]">
                 {`Critical error: ${props.clientErrorMessage}`}
             </main>
             <Foot />

@@ -27,6 +27,6 @@ export default function SearchClient() {
         <div className="relative z-[1000]">
             <Header headerTitle="Model Search" pageRoute="collections" />
         </div>
-        <section className="min-h-[calc(100vh-177px)]"><SearchPageContent /></section>
+        <section className="min-h-[calc(100vh-176px)]"><SearchPageContent /></section>
     </QueryContext.Provider>
 }

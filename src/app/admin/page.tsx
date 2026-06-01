@@ -20,7 +20,7 @@ export default async function Page() {
     
     return <>
             <Header headerTitle="admin" pageRoute="admin" />
-            <div className='flex min-h-[calc(100vh-177px)] justify-center items-center text-3xl'>
+            <div className='flex min-h-[calc(100vh-176px)] justify-center items-center text-3xl'>
                 <ul>
                     <li className="mb-8 hover:underline"><a href='/admin/management'>Management</a></li>
                     <li className="mb-8 hover:underline"><a href='/admin/modeler'>3D Modeler</a></li>

@@ -11,7 +11,7 @@ import Footer from '@/components/Shared/Foot'
 // Main component
 const Licensing = () => <>
       <Header headerTitle="contribute" pageRoute="collections" />
-      <div className="h-[calc(100vh-177px)] pl-8 pr-8">
+      <div className="h-[calc(100vh-176px)] pl-8 pr-8">
         <br></br>
         <p>Copyright 2025-2026 3dherbarium.net</p>
         <br></br>

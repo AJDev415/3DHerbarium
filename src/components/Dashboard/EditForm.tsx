@@ -5,9 +5,9 @@ import MobileSelect from '@/components/ModelSubmit/MobileSelectField';
 import ProcessSelect from '@/components/ModelSubmit/ProcessSelectField';
 import { Button } from "@heroui/react";
 import { Divider } from '@heroui/react';
-import TagInput from '@/components/ModelSubmit/Tags';
 import { LatLngLiteral } from 'leaflet';
 import dynamic from 'next/dynamic';
+const TagInput = dynamic(() => import('@/components/ModelSubmit/Tags'), { ssr: false })
 const FormMap = dynamic(() => import('../Map/Form'), { ssr: false })
 import AutoCompleteWrapper from '../Shared/Form Fields/AutoCompleteWrapper';
 import TextInput from '../Shared/TextInput';

@@ -42,7 +42,7 @@ export default async function Page() {
         // Return Header, ManagerClient in a wrapper, Footer
         return <>
             <Header pageRoute="collections" headerTitle='Management' />
-            <section className="flex flex-col !min-h-[calc(100vh-177px)]">
+            <section className="flex flex-col !min-h-[calc(100vh-176px)]">
                 <ManagerClient pendingModels={pendingModelsJson} katId={process.env.BOTANIST_JIRA_ID as string} hunterId={process.env.hunter_JIRA_ID as string} />
             </section>
             <Foot />

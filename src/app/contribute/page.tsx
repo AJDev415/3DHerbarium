@@ -9,7 +9,7 @@ import Footer from '@/components/Shared/Foot'
 const Contribute = () => {
   return <>
     <Header headerTitle="contribute" pageRoute="collections" />
-    <div className="min-h-[calc(100vh-177px)] h-full p-8">
+    <div className="min-h-[calc(100vh-176px)] h-full p-8">
       {/* <ContributionFormWrapper /> */}
       <p>If you would like to contribute to the 3D Digital Herbarium project, firstly, thank you!</p>
       <br></br>

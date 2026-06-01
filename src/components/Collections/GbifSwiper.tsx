@@ -37,7 +37,7 @@ const OccurrenceSwiper: React.FC<GbifOccurrenceSwiperProps> = (props) => {
 
   return <Swiper
     ref={swiperRef}
-    className='mt-1 w-full h-[calc(100vh-212px)] lg:h-[calc(100vh-222px)] min-h-[300px]'
+    className='mt-1 w-full h-[calc(100vh-212px)] lg:h-[calc(100vh-220px)] min-h-[300px]'
     style={{
       maxHeight: props.swiperHeight,
       '--swiper-pagination-bottom': '1px',
@@ -94,8 +94,8 @@ const OccurrenceSwiper: React.FC<GbifOccurrenceSwiperProps> = (props) => {
               />
             </section>
             <section className='bg-[#98B8AD] dark:bg-[#3d3d3d] opacity-[0.99] px-5 rounded-br-md rounded-bl-md text-center relative z-10 flex flex-col justify-center items-center h-28'>
-              <p className='font-medium text-black  dark:text-white text-xl'>{toUpperFirstLetter(observation.author)}</p>
-              <p className='text-black h-[50px] dark:text-white overflow-auto'>{observation.license}</p>
+              <p className='font-medium text-white  dark:text-white text-xl'>{toUpperFirstLetter(observation.author)}</p>
+              <p className='text-white h-[50px] dark:text-white overflow-auto'>{observation.license}</p>
             </section>
           </article>
         </SwiperSlide>)

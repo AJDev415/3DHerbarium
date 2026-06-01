@@ -115,7 +115,7 @@ export default function PlantIdPage() {
     {
       isClient &&
       <>
-        <section className="flex flex-col min-h-[calc(100vh-177px)]">
+        <section className="flex flex-col min-h-[calc(100vh-176px)]">
 
           <h1 className="text-xl p-5">Identify a plant through just an image. JPEGs and PNGs only!</h1>
           <input id='plantIdFileInput' type="file" accept="image/*" multiple onChange={handleImageSelect} className="m-5" />

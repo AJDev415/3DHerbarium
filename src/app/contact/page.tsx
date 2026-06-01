@@ -10,7 +10,7 @@ const Contribute = () => {
   return (
     <>
       <Header headerTitle="contribute" pageRoute="collections" />
-      <div className="h-[calc(100vh-177px)] pl-8">
+      <div className="h-[calc(100vh-176px)] pl-8">
         <br></br>
         <p>All inquiries can be directed to info@3dherbarium.net</p>
       </div>

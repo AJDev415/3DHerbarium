@@ -5,7 +5,7 @@ export default function Page() {
     return (
         <>
             <Header headerTitle="Model Contribution FAQ" pageRoute="collections" />
-            <main className="min-h-[calc(100vh-177px)] px-8 py-8">
+            <main className="min-h-[calc(100vh-176px)] px-8 py-8">
                 <h1 className="text-3xl mb-12">About 3D model contribution</h1>
                 <h2 className="text-2xl mb-2">How it works</h2>
                 <p className="mb-12">
