@@ -12,6 +12,7 @@
 
 // Typical imports
 import { signIn, useSession, signOut } from "next-auth/react"
+import { useEffect, useRef } from "react"
 
 // Default imports
 import Image from "next/image"
@@ -22,6 +23,17 @@ export default function LogoAndSignIn() {
 
     // Variables
     const { data: session } = useSession();
+    const detailsRef = useRef<HTMLDetailsElement>(null)
+
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (detailsRef.current && !detailsRef.current.contains(e.target as Node) && detailsRef.current.open) {
+                detailsRef.current.querySelector('summary')?.click()
+            }
+        }
+        document.addEventListener('click', handleClickOutside)
+        return () => document.removeEventListener('click', handleClickOutside)
+    }, [])
 
     return <section className="hidden lg:flex pl-[0.5vw]">
         <div className="flex items-center mr-2">
@@ -39,22 +51,23 @@ export default function LogoAndSignIn() {
         }
         {
             session &&
-            <details className="relative">
+            <details ref={detailsRef} className="relative">
                 <summary
                     aria-label="Open user navigation menu"
-                    className="list-none cursor-pointer flex items-center justify-center bg-[#004C46] rounded-full w-9 h-9"
+                    className="list-none cursor-pointer flex items-center justify-center bg-[#00856A] rounded-full w-9 h-9"
                 >
                     <Image src="/icons/user.svg" alt="User" width={27} height={30} />
                 </summary>
-                <nav className="absolute right-0 mt-2 min-w-[220px] rounded-lg border border-[#D9D2B0] bg-[#F5F3E7] shadow-lg overflow-hidden z-50">
-                    <Link href="/dashboard" className="block px-4 py-3 text-[#004C46] hover:bg-[#D9D2B0]/70">
+                <nav className="absolute right-0 mt-2 min-w-[220px] rounded-lg border border-[#D9D2B0] bg-[#F5F3E7] 
+                dark:bg-[#212121] dark:border-[#333] shadow-lg overflow-hidden z-50 dark:text-slate-200">
+                    <Link href="/dashboard" className="block px-4 py-3 text-[#004C46] dark:text-white hover:bg-[#D9D2B0]/70 dark:hover:bg-[#004C46]">
                         Dashboard
                     </Link>
-                    <Link href="/modelSubmit" className="block px-4 py-3 text-[#004C46] hover:bg-[#D9D2B0]/70">
+                    <Link href="/modelSubmit" className="block px-4 py-3 text-[#004C46] dark:text-white hover:bg-[#D9D2B0]/70 dark:hover:bg-[#004C46]">
                         Contribute a 3D Model
                     </Link>
                     <button
-                        className="block w-full text-left px-4 py-3 text-[#004C46] hover:bg-[#D9D2B0]/70"
+                        className="block w-full text-left px-4 py-3 text-[#004C46] dark:text-white hover:bg-[#D9D2B0]/70 dark:hover:bg-[#004C46]"
                         onClick={() => signOut()}
                     >
                         Sign Out

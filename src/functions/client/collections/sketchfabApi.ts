@@ -11,7 +11,7 @@
 // Typical imports
 import { setViewerWidth, annotationControl } from "@/components/Collections/SketchfabDom"
 import { CollectionsWrapperProps, setStringOrNumberAction, sketchfabApiData, sketchfabApiReducerAction } from "@/ts/collections"
-import { MutableRefObject, Dispatch } from "react"
+import { RefObject, Dispatch } from "react"
 import { isMobileOrTablet } from "@/functions/client/utils/isMobile"
 import { photo_annotation } from "@prisma/client"
 import { fullAnnotation } from "@/ts/types"
@@ -30,7 +30,7 @@ import Herbarium from "@/functions/client/utils/HerbariumClass"
  * @param props 
  * @param sketchfabApiDispatch 
  */
-export const initializeCollections = (client: any, successObj: any, successObjDesktop: any, sRef: MutableRefObject<Herbarium | undefined>, props: CollectionsWrapperProps, sketchfabApiDispatch: Dispatch<sketchfabApiReducerAction>) => {
+export const initializeCollections = (client: any, successObj: any, successObjDesktop: any, sRef: RefObject<Herbarium | undefined>, props: CollectionsWrapperProps, sketchfabApiDispatch: Dispatch<sketchfabApiReducerAction>) => {
     initializeModelViewer(client, props.model[0].uid, successObj, successObjDesktop)
     instantiateHerbarium(sRef, props, sketchfabApiDispatch)
 }
@@ -53,7 +53,7 @@ export const initializeModelViewer = (client: any, uid: string, successObj: any,
  * @param props 
  * @param dispatch 
  */
-export const instantiateHerbarium = async (sRef: MutableRefObject<Herbarium | undefined>, props: CollectionsWrapperProps, dispatch: Dispatch<sketchfabApiReducerAction>) => {
+export const instantiateHerbarium = async (sRef: RefObject<Herbarium | undefined>, props: CollectionsWrapperProps, dispatch: Dispatch<sketchfabApiReducerAction>) => {
     sRef.current = await Herbarium.model(props.gMatch.data?.usageKey as number, props.model[0], props.noModelData.images, props.noModelData.title).catch(e => dispatch({ type: 'error', errorMessage: e.message })) as Herbarium
     dispatch({ type: 'setSpecimen', specimen: sRef.current, annotations: sRef.current.annotations.annotations })
 }
@@ -153,7 +153,7 @@ export const addAnnotationSwitchListeners = (annotationSwitch: HTMLInputElement 
  * @param annotationDiv a ref to the div with id: 'annotatonDiv'
  * @description sets the viewer width accordingly and removes/restores annotations upon press of the annotation switch
  */
-export const annotationSwitchListener = (event: Event, sketchfabApiData: sketchfabApiData, modelViewer: MutableRefObject<HTMLIFrameElement | undefined>, annotationDiv: MutableRefObject<HTMLDivElement | undefined>) => {
+export const annotationSwitchListener = (event: Event, sketchfabApiData: sketchfabApiData, modelViewer: RefObject<HTMLIFrameElement | undefined>, annotationDiv: RefObject<HTMLDivElement | undefined>) => {
     setViewerWidth(modelViewer.current, annotationDiv.current, (event.target as HTMLInputElement).checked)
     annotationControl(sketchfabApiData.api, sketchfabApiData.annotations, (event.target as HTMLInputElement).checked)
 }
@@ -165,7 +165,7 @@ export const annotationSwitchListener = (event: Event, sketchfabApiData: sketchf
  * @param modelViewer 
  * @param annotationDiv 
  */
-export const annotationSwitchMobileListener = (event: Event, sketchfabApiData: sketchfabApiData, modelViewer: MutableRefObject<HTMLIFrameElement | undefined>, annotationDiv: MutableRefObject<HTMLDivElement | undefined>) => {
+export const annotationSwitchMobileListener = (event: Event, sketchfabApiData: sketchfabApiData, modelViewer: RefObject<HTMLIFrameElement | undefined>, annotationDiv: RefObject<HTMLDivElement | undefined>) => {
     setViewerWidth(modelViewer.current, annotationDiv.current, (event.target as HTMLInputElement).checked)
     annotationControl(sketchfabApiData.api, sketchfabApiData.annotations, (event.target as HTMLInputElement).checked)
 }

@@ -25,7 +25,7 @@ export default function CollectionsSubheader(props: { isSelected: boolean, setIs
     const title = context.collectionsWrapperProps.noModelData.title
 
     // Return JSX
-    return <div className="hidden lg:flex h-10 bg-[#00856A] dark:bg-[#212121] text-white items-center justify-between border-t dark:border-t-[#333]">
+    return <div className="hidden lg:flex h-10 bg-[#00856A] dark:bg-[#212121] text-white items-center justify-between dark:border-t dark:border-t-[#333]">
 
         <CollectionsMediaRadio setIsSelected={props.setIsSelected} />
 

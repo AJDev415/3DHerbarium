@@ -190,11 +190,10 @@ export const fetchSpecimenObservationsLeaders = async (specimenName: string, sea
  * @returns {Promise<{ hasInfo: boolean; data?: GbifResponse }>} whether GBIF data is available, and if so, returns the data
  */
 export const fetchSpecimenGbifInfo = async (specimenName: string): Promise<{ hasInfo: boolean; data?: GbifResponse }> => {
-  const rank = specimenName.trim().includes(' ') ? 'name' : 'genus'
-  const gbifUrl: string = `https://api.gbif.org/v1/species/match?kingdom=plantae&${rank}=${specimenName}`
+  const gbifUrl: string = `https://api.gbif.org/v1/species/match?kingdom=plantae&name=${specimenName}`
   const gbifInfo: GbifResponse = await basicFetch<GbifResponse>(gbifUrl)
 
-  if (!['EXACT', 'HIGHERRANK'].includes(gbifInfo.matchType) || (gbifInfo.rank !== 'SPECIES' && gbifInfo.rank !== 'GENUS')) {
+  if (!['EXACT', 'HIGHERRANK'].includes(gbifInfo.matchType)) {
     return { hasInfo: false };
   }
 

@@ -90,15 +90,14 @@ export default function SFAPI(props: { numberOfAnnotations: number, annotations:
   // Initialize model viewer and instantiate herbarium specimen object; initialize annotations and event listeners; handle photo source if selected annotation is a photo annotation
   useEffect(() => {
     if (!modelViewer.current) return
-
     fn.initializeCollections(new Sketchfab(modelViewer.current), successObj, successObjDesktop, sRef, wrapperProps, sketchfabApiDispatch)
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  
   useEffect(() => fn.initializeAnnotationsAndListeners(sketchfabApi, sketchfabApiDispatch, annotationSwitch, annotationSwitchMobile, annotationSwitchWrapper, mobileAnnotationSwitchWrapper, annotationSelectWrapper), [sketchfabApi.api, sketchfabApi.annotations, sketchfabApi.s])
   useEffect(() => fn.photoSrcChangeHandler(sketchfabApi, sketchfabApiDispatch), [sketchfabApi.index]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Error state return
   if (sketchfabApi.error) return <FullPageError clientErrorMessage={sketchfabApi.errorMessage as string} />
-  console.log(sketchfabApi.annotations)
 
   // JSX
   return <SketchfabApiContext.Provider value={sketchfabProviderValue}>

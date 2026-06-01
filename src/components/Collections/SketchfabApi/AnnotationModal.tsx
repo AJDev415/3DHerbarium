@@ -41,7 +41,7 @@ export default function AnnotationModal(props: annotationModalProps) {
         <ModalContent>
           <>
             {/*@ts-ignore*/}
-            <ModalHeader class='fade' className="flex gap-1 w-full items-center">
+            <ModalHeader className="flex gap-1 w-full items-center fade">
               <p className="text-center text-2xl pt-[20px]">{props.title}</p>
             </ModalHeader>
 

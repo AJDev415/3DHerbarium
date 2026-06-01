@@ -20,6 +20,7 @@ export async function GET(request: Request) {
 
     try {
 
+        console.log('server called')
         // Variable initialization
         var results: any[] = []
         const { searchParams } = new URL(request.url)
