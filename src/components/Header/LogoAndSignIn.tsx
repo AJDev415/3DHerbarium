@@ -38,7 +38,7 @@ export default function LogoAndSignIn() {
         isAdmin()
     }, [])
 
-    return <NavbarContent className="hidden lg:flex pl-[0.5vw]" justify="end">
+    return <section className="hidden lg:flex pl-[0.5vw]" justify="end">
             <Link href='/' aria-label="Go to the home page">
                 <Image src="/icons/whiteHome.svg" width={35} height={70} alt="Logo" className="pt-[3px]" />
             </Link>
@@ -85,5 +85,5 @@ export default function LogoAndSignIn() {
                     </DropdownMenu>
                 </Dropdown>
             }
-        </NavbarContent>
+        </section>
 }

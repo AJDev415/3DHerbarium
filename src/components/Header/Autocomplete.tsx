@@ -23,7 +23,6 @@ const AutoComplete = forwardRef((props: { autocompleteOptions: any[], fetchAutoC
     const router = useRouter()
     
     return <>
-        <NavbarItem>
             <section className="flex">
                 <Autocomplete
                     search
@@ -40,7 +39,6 @@ const AutoComplete = forwardRef((props: { autocompleteOptions: any[], fetchAutoC
                     <SearchIcon style={{ color: "black" }} size={22} width="" height="" />
                 </button>
             </section>
-        </NavbarItem>
     </>
 })
 

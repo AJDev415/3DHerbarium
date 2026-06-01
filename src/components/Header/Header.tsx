@@ -13,11 +13,11 @@ import { MobileSearch } from "./MobileSearch"
 import { useSession, } from "next-auth/react"
 import { useParams } from "next/navigation"
 import { useRef, useState, useEffect } from "react"
-import { Navbar, NavbarContent, NavbarMenuToggle, NavbarBrand, NavbarMenu, NavbarMenuItem, Divider, Switch } from "@heroui/react"
+import { Switch } from "@heroui/react"
 import { toUpperFirstLetter } from "@/functions/server/utils/toUpperFirstLetter"
 import { SearchIcon } from "./SearchIcon"
 import { SearchHeaderProps } from "@/ts/types"
-import { addDarkThemeListener, detectDarkTheme, removeDarkThemeListener} from "@/components/Header/headerLogic"
+import { addDarkThemeListener, detectDarkTheme, removeDarkThemeListener } from "@/components/Header/headerLogic"
 
 // Default imports
 import LogoAndSignIn from "./LogoAndSignIn"
@@ -29,7 +29,7 @@ import MobileMenuOptions from "./MobileMenuOptions"
 import MobileMenu from "./MobileMenu"
 
 // Main JSX
-export default function Header (props: SearchHeaderProps) {
+export default function Header(props: SearchHeaderProps) {
 
   // Variable declarations
   const params = useParams()
@@ -63,123 +63,109 @@ export default function Header (props: SearchHeaderProps) {
 
   // Dark theme effects
   useEffect(() => detectDarkTheme(), [])
-  useEffect(() => {addDarkThemeListener(); return () => removeDarkThemeListener()}, [])
+  useEffect(() => { addDarkThemeListener(); return () => removeDarkThemeListener() }, [])
 
   return <>
-      <Navbar
-        isMenuOpen={isMenuOpen}
-        onMenuOpenChange={setIsMenuOpen}
-        className="justify-between max-w-none bg-[#004C46] dark:bg-[#212121] text-white dark:text-white"
-        classNames={{ wrapper: "py-[10px] px-[6px]" }}
+    <header className="justify-between max-w-none bg-[#004C46] dark:bg-[#212121] text-white
+     dark:text-white h-[44px] flex items-center px-[2vw] lg:px-[1vw] w-screen z-10 relative">
+
+      <button
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        className="text-white p-2" /* added padding to make the button easily clickable */
+        aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
       >
+        <svg
+          aria-hidden="true"
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+        >
+          {isMenuOpen ? (
+            /* "X" (Close) Icon Path */
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          ) : (
+            /* Hamburger (Menu) Icon Path */
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          )}
+        </svg>
+      </button>
 
-        {/* Mobile Menu Toggle */}
+      {/* Hidden switch for annotation switch reference */}
 
-        <NavbarContent className="lg:hidden" justify="start">
-          <NavbarMenuToggle
-            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-            className="text-white"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            icon={(open: boolean) => (
-              <svg
-                aria-hidden="true"
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                {open ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            )}
-          />
-        </NavbarContent>
+      {
+        props.setAnnotationsEnabled &&
+        <div className="justify-start hidden">
+          <Switch defaultSelected id="annotationSwitchMobileHidden" isSelected={props.annotationsEnabled} color='secondary' onValueChange={props.setAnnotationsEnabled}></Switch>
+        </div>
+      }
 
-        {/* Hidden switch for annotation switch reference */}
+      {/* Autocomplete search bar*/}
 
-        {
-          props.setAnnotationsEnabled &&
-          <NavbarContent className="justify-start hidden">
-            <Switch defaultSelected id="annotationSwitchMobileHidden" isSelected={props.annotationsEnabled} color='secondary' onValueChange={props.setAnnotationsEnabled}></Switch>
-          </NavbarContent>
-        }
+      <div className="items-center hidden lg:flex justify-start">
+        <AutoComplete autocompleteOptions={autocompleteOptions} fetchAutoCompleteOptions={fetchAutoCompleteOptions} ref={searchQuery} />
+      </div>
 
-        {/* Autocomplete search bar*/}
+      {/* Mobile Species Title*/}
 
-        <NavbarContent as="div" className="items-center hidden lg:flex" justify="start">
-          <AutoComplete autocompleteOptions={autocompleteOptions} fetchAutoCompleteOptions={fetchAutoCompleteOptions} ref={searchQuery} />
-        </NavbarContent>
+      <div className="lg:hidden pr-3 flex justify-center">
+        <p className="font-bold text-[white]"><i>{toUpperFirstLetter(decodeURIComponent(specimenName))}</i></p>
+      </div>
 
-        {/* Mobile Species Title*/}
+      {/* Large screen link section */}
 
-        <NavbarContent className="lg:hidden pr-3" justify="center">
-          <NavbarBrand>
-            <p className="font-bold text-[white]"><i>{toUpperFirstLetter(decodeURIComponent(specimenName))}</i></p>
-          </NavbarBrand>
-        </NavbarContent>
+      <div className="hidden lg:flex gap-4 justify-center">
+        <Links page={props.page} />
+      </div>
 
-        {/* Large screen link section */}
+      {/* Mobile search button/icon */}
 
-        <NavbarContent className="hidden lg:flex gap-4" justify="center">
-          <Links page={props.page} />
-        </NavbarContent>
+      <div className="items-center lg:hidden flex justify-end">
+        <button onClick={() => setMobileSearchOpen(true)}>
+          <SearchIcon size={22} width="" height="" />
+        </button>
+      </div>
 
-        {/* Mobile search button/icon */}
+      <LogoAndSignIn />
 
-        <NavbarContent as="div" className="items-center lg:hidden" justify="end">
-          <button onClick={() => setMobileSearchOpen(true)}>
-            <SearchIcon size={22} width="" height="" />
-          </button>
-        </NavbarContent>
+    </header>
 
-        {/* Mobile Search Modal */}
+    <MobileMenu isOpen={isMenuOpen} />
+    <MobileSearch isOpen={mobileSearchOpen} setIsOpen={setMobileSearchOpen} autocompleteOptions={autocompleteOptions} fetchAutoCompleteOptions={fetchAutoCompleteOptions} ref={searchQuery} />
 
-        <MobileSearch isOpen={mobileSearchOpen} setIsOpen={setMobileSearchOpen} autocompleteOptions={autocompleteOptions} fetchAutoCompleteOptions={fetchAutoCompleteOptions} ref={searchQuery} />
-
-        {/* Logo and Sign in Button*/}
-
-        <LogoAndSignIn />
-
-        {/***** MOBILE NAVBAR MENU *****/}
-
-      </Navbar >
-      <MobileMenu isOpen={isMenuOpen} />
-    </>
+  </>
 }
 
 
-        // <NavbarMenu className="z-20 border">
+// <NavbarMenu className="z-20 border">
 
-        //   {/* User section header */}
+//   {/* User section header */}
 
-        //   <NavbarMenuItem>
-        //     <h1 className="text-center">User</h1>
-        //     <Divider />
-        //   </NavbarMenuItem>
+//   <NavbarMenuItem>
+//     <h1 className="text-center">User</h1>
+//     <Divider />
+//   </NavbarMenuItem>
 
-        //   {/* Mobile session-based options */}
+//   {/* Mobile session-based options */}
 
-        //   <MobileSessionOptions session={session} userItems={userItems} />
+//   <MobileSessionOptions session={session} userItems={userItems} />
 
-        //   {/* Navigation Section Header */}
+//   {/* Navigation Section Header */}
 
-        //   <NavbarMenuItem>
-        //     <h1 className="text-center">Navigation</h1>
-        //     <Divider />
-        //   </NavbarMenuItem>
+//   <NavbarMenuItem>
+//     <h1 className="text-center">Navigation</h1>
+//     <Divider />
+//   </NavbarMenuItem>
 
-        //   {/* Static mobile navigation */}
+//   {/* Static mobile navigation */}
 
-        //   <MobileMenuOptions menuItems={menuItems} />
+//   <MobileMenuOptions menuItems={menuItems} />
 
-        //   {/* Mobile rendering conditional on whether there is a model */}
+//   {/* Mobile rendering conditional on whether there is a model */}
 
-        //   {
-        //     props.setAnnotationsEnabled &&
-        //     <MobileModelOptions hasModel={props.hasModel} isSelected={props.annotationsEnabled} setIsSelected={props.setAnnotationsEnabled} />
-        //   }
-        // </NavbarMenu>
+//   {
+//     props.setAnnotationsEnabled &&
+//     <MobileModelOptions hasModel={props.hasModel} isSelected={props.annotationsEnabled} setIsSelected={props.setAnnotationsEnabled} />
+//   }
+// </NavbarMenu>

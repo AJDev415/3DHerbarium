@@ -1,6 +1,5 @@
 'use client'
 
-import { NavbarItem } from "@heroui/react"
 import { useEffect, useState } from "react";
 import { isBotanyTouchscreen } from "@/functions/client/touchScreen";
 
@@ -14,21 +13,21 @@ export default function Links(props: { page?: string }) {
 
     return (
         <>
-            <NavbarItem className="pr-[2vw]">
+            <div className="pr-[2vw]">
                 <Link className="text-white dark:text-[#F5F3E7]" href={`/collections/search`} aria-label="Go to the collections page">
                     Collections
                 </Link>
-            </NavbarItem>
-            <NavbarItem className="pr-[2vw]">
+            </div>
+            <div className="pr-[2vw]">
                 <Link className="text-white dark:text-[#F5F3E7]" href={`/plantid`} aria-label="Go to the plant.id page">
                     Plant.id
                 </Link>
-            </NavbarItem>
-            <NavbarItem className="pr-[2vw]">
+            </div>
+            <div className="pr-[2vw]">
                 <Link className="text-white dark:text-[#F5F3E7]" href={`/media`} aria-label="Go to the media">
                     Media
                 </Link>
-            </NavbarItem>
+            </div>
         </>
     )
 }
