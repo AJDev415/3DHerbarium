@@ -80,6 +80,9 @@ export default function MainWrap(props: CollectionsWrapperProps) {
   // Check for community model if there is a community ID parameter or no herbarium 3D model found for the searched specimen name
   useEffect(() => { if (communityId || !props.model.length) getCommunityModel(collectionsWrapperProps, communityId, setUserModels, setIdError) }, [])
 
+  console.log(props.model.length && props.gMatch.hasInfo)
+  console.log(props.gMatch.hasInfo)
+
   // Return error page if idError is true
   if (idError) return <CollectionsWrapperIdError specimenName={props.specimenName} />
 
