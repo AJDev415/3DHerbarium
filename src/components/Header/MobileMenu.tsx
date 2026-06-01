@@ -24,7 +24,7 @@ export default function MobileMenu(props: { isOpen: boolean }) {
     return <dialog
         id="mobileMenuDialog"
         ref={dialogRef}
-        className="fixed left-0 top-[44px] m-0 h-[calc(100vh-44px)] w-screen max-w-none border-0 p-0"
+        className="fixed left-0 top-[44px] m-0 h-[calc(100vh-44px)] w-screen max-w-none border-0 p-0 z-[9999]"
     >
         <div className="flex h-full w-full flex-col bg-[#F5F3E7] px-6 py-8 dark:bg-[#1a1a1a]">
             {session ? (

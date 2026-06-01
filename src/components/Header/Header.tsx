@@ -67,11 +67,11 @@ export default function Header(props: SearchHeaderProps) {
 
   return <>
     <header className="justify-between max-w-none bg-[#004C46] dark:bg-[#212121] text-white
-     dark:text-white h-[44px] flex items-center px-[2vw] lg:px-[1vw] w-screen z-10 relative">
+     dark:text-white h-[44px] lg:h-[64px] flex items-center px-[2vw] lg:pl-[1vw] lg:pr-[2vw] w-screen z-10 relative">
 
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="text-white p-2" /* added padding to make the button easily clickable */
+        className="text-white p-2 lg:hidden" /* added padding to make the button easily clickable */
         aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
       >
         <svg

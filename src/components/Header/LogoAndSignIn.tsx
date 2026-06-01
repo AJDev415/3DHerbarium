@@ -38,52 +38,54 @@ export default function LogoAndSignIn() {
         isAdmin()
     }, [])
 
-    return <section className="hidden lg:flex pl-[0.5vw]" justify="end">
+    return <section className="hidden lg:flex pl-[0.5vw]">
+        <div className="flex items-center mr-2">
             <Link href='/' aria-label="Go to the home page">
                 <Image src="/icons/whiteHome.svg" width={35} height={70} alt="Logo" className="pt-[3px]" />
             </Link>
-            {!session &&
-                <Button
-                    variant='solid'
-                    className="bg-[#004C46] text-white hover:bg-[#00665f] rounded-xl font-semibold"
-                    onClick={() => signIn()}
+        </div>
+        {!session &&
+            <Button
+                variant='solid'
+                className="bg-[#004C46] text-white hover:bg-[#00665f] rounded-xl font-semibold"
+                onClick={() => signIn()}
+            >
+                Sign In
+            </Button>
+        }
+        {
+            session &&
+            <Dropdown>
+                <DropdownTrigger>
+                    <Avatar
+                        className="cursor-pointer border border-[#D9D2B0] bg-[#F5F3E7] text-[#004C46] shadow-sm"
+                        isFocusable={true}
+                        src={session?.user?.image!}
+                        name={session?.user?.name!}
+                        aria-label="Avatar dropdown menu"
+                    />
+                </DropdownTrigger>
+                <DropdownMenu
+                    aria-label="Static Actions"
+                    classNames={{
+                        base: "bg-[#F5F3E7] text-[#004C46] border border-[#D9D2B0] shadow-lg",
+                        list: "bg-[#F5F3E7] text-[#004C46]",
+                        emptyContent: "text-[#004C46]"
+                    }}
+                    itemClasses={{
+                        base: "text-[#004C46] data-[hover=true]:bg-[#D9D2B0]/70 data-[pressed=true]:bg-[#D9D2B0]/90"
+                    }}
                 >
-                    Sign In
-                </Button>
-            }
-            {
-                session &&
-                <Dropdown>
-                    <DropdownTrigger>
-                        <Avatar
-                            className="cursor-pointer border border-[#D9D2B0] bg-[#F5F3E7] text-[#004C46] shadow-sm"
-                            isFocusable={true}
-                            src={session?.user?.image!}
-                            name={session?.user?.name!}
-                            aria-label="Avatar dropdown menu"
-                        />
-                    </DropdownTrigger>
-                    <DropdownMenu
-                        aria-label="Static Actions"
-                        classNames={{
-                            base: "bg-[#F5F3E7] text-[#004C46] border border-[#D9D2B0] shadow-lg",
-                            list: "bg-[#F5F3E7] text-[#004C46]",
-                            emptyContent: "text-[#004C46]"
-                        }}
-                        itemClasses={{
-                            base: "text-[#004C46] data-[hover=true]:bg-[#D9D2B0]/70 data-[pressed=true]:bg-[#D9D2B0]/90"
-                        }}
-                    >
-                        <DropdownItem aria-label="dashboard option" key="dashboard" onClick={() => router.push('/dashboard')}>Dashboard</DropdownItem>
-                        <DropdownItem aria-label="submit model option" key="modelSubmit" onClick={() => router.push('/modelSubmit')}>Submit 3D Model</DropdownItem>
-                        {
-                            isAdministrator && process.env.NEXT_PUBLIC_LOCAL_ENV === 'development' && session.user?.email !== 'aj@3dherbarium.net' &&
-                            <DropdownItem aria-label="dev admin option" key="devAdmin" onClick={() => router.push('/admin')}>Admin</DropdownItem>
-                        }
-                        {session.user?.email === 'aj@3dherbarium.net' && <DropdownItem aria-label="admin option" key="admin" onClick={() => router.push('/admin')}>Admin</DropdownItem>}
-                        <DropdownItem aria-label="Sign out" key="signOut" onClick={() => signOut()}>Sign Out</DropdownItem>
-                    </DropdownMenu>
-                </Dropdown>
-            }
-        </section>
+                    <DropdownItem aria-label="dashboard option" key="dashboard" onClick={() => router.push('/dashboard')}>Dashboard</DropdownItem>
+                    <DropdownItem aria-label="submit model option" key="modelSubmit" onClick={() => router.push('/modelSubmit')}>Submit 3D Model</DropdownItem>
+                    {
+                        isAdministrator && process.env.NEXT_PUBLIC_LOCAL_ENV === 'development' && session.user?.email !== 'aj@3dherbarium.net' &&
+                        <DropdownItem aria-label="dev admin option" key="devAdmin" onClick={() => router.push('/admin')}>Admin</DropdownItem>
+                    }
+                    {session.user?.email === 'aj@3dherbarium.net' && <DropdownItem aria-label="admin option" key="admin" onClick={() => router.push('/admin')}>Admin</DropdownItem>}
+                    <DropdownItem aria-label="Sign out" key="signOut" onClick={() => signOut()}>Sign Out</DropdownItem>
+                </DropdownMenu>
+            </Dropdown>
+        }
+    </section>
 }

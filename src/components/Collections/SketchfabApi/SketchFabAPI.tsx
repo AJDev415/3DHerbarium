@@ -113,7 +113,7 @@ export default function SFAPI(props: { numberOfAnnotations: number, annotations:
       {sketchfabApi.s && sketchfabApi.annotations && sketchfabApi.annotations.length > 0 && <Annotation sketchfabApi={sketchfabApi} gMatch={gMatch} ref={annotationDiv} />}
       {
         sketchfabApi.s && sketchfabApi.annotations && sketchfabApi.annotations.length === 0 &&
-        <section className="w-[40%] h-full flex flex-col justify-center items-center overflow-y-auto">
+        <section className="w-[40%] h-full lg:flex lg:flex-col justify-center items-center overflow-y-auto hidden">
           <TaxonomyAndDescription gMatch={gMatch} sketchfabApi={sketchfabApi} />
         </section>
       }

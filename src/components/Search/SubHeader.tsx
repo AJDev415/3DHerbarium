@@ -25,7 +25,7 @@ export default function SubHeader(props: { state: SearchPageState, setState: Dis
   const annotatedByList = state.annotatedByList as string[]
 
   return <Navbar
-    className="hidden md:flex z-0 w-full bg-[#00856A] dark:bg-[#212121] border-t"
+    className="hidden md:flex z-0 w-full bg-[#00856A] dark:bg-[#212121] border-t dark:border-t-[#333]"
     classNames={{ wrapper: "py-2 px-4" }}
   >
 
